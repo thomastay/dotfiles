@@ -1,4 +1,9 @@
 *
 !.vimrc
 !.gitignore
+!*.txt
+!*.tex
+!Documents/
+!source/
+
 

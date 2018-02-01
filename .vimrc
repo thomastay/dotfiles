@@ -13,6 +13,7 @@ call vundle#begin('$HOME/vimfiles/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'vim-latex/vim-latex'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -41,7 +42,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 "For CtrlP
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
@@ -63,9 +64,14 @@ nmap <leader>tt :edit
 " For fugitive (Git)
 nmap <leader>ga :Git add %:p<CR><CR>
 nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit -v -q<CR>
-nmap <leader>gd :Gdiff<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gd :Gdiff
 nmap <leader>gl :Git local 
+
+
+" For spellchecking
+nmap <leader>sc :setlocal spell spelllang=en_us<CR>
+nmap <leader>ns :setlocal nospell<CR>
 
 "In general
 syntax enable
@@ -85,6 +91,7 @@ set formatoptions-=cro
 
 "Mapping keys
 map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
+map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys
 imap jj <Esc>
@@ -101,6 +108,6 @@ command! Wq wq
 "Macros
 let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	
 let @s='a$ s.t. if $'
-let @e='i\begin{enumerate}[label = (\alph*)]	\item\item\end{enumerate}^xkk$a'
+let @e='i\begin{enumerate}[label = (\alph*)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 

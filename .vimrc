@@ -90,6 +90,14 @@ set nolist  " list disables linebreak
 set textwidth=0
 set wrapmargin=0
 set formatoptions-=cro
+set splitright
+" set splitbelow
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
 "Mapping keys
 map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
@@ -104,6 +112,7 @@ nnoremap ^ 0
 nnoremap <Space> i<Space><Esc>
 
 command! W write
+command! Q o
 command! WQ wq
 command! Wq wq
 
@@ -112,4 +121,6 @@ let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'
 let @s='a$ s.t. if $'
 let @e='i\begin{enumerate}[label = (\alph*)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
+let @a='o\begin{align*}a &= b\\b &= a\end{align*}jjkk0'
+
 

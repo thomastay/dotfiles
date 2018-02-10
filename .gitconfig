@@ -1,0 +1,15 @@
+[winUpdater]
+	recentlySeenVersion = 2.15.1.windows.2
+[user]
+	name = ttay
+	email = ttay@umich.edu
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	lazy = "!f() { git commit -a -m \"$@\" && git push; }; f"
+	lazyall = "!f() { git add . &&  git commit -m \"$@\" && git push; }; f"
+	local = "!f() { git add -A && git commit -a -m \"$@\"; }; f"

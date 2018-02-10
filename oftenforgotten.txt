@@ -1,0 +1,41 @@
+Path is in C:\Users\Thomas\AppData\Local
+
+##VIM
+di(							#in Vim, di( means delete in ()
+dt(							#In Vim, dt( means delete to (
+"a"ap						#The command pastes the register in a as literal text 
+
+##BASH
+grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
+grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
+
+##GIT
+In Git, HEAD refers to the current node you are in
+In the shell, head refers to the command to get one line (or more, depending on your commands)
+HEAD^ goes back one node
+Git show shows the commit
+Git diff <filename> tells you the difference between files
+Types of git resets:
+	--soft: The staged snapshot and working directory are not altered in any way.
+	--mixed: The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.
+	--hard: The staged snapshot and the working directory are both updated to match the specified commit.
+
+Git revert undoes changes by creating a new commit
+
+Git reflog shows all commits, even deleted ones
+
+git rm --cached <filename>			#Removes a file from your staging area
+
+
+
+##Powershell
+Get-ChildItem . | Foreach-Object {
+    echo $_.Name 
+	echo $_.BaseName //Name without extension
+	echo $_.Extension //extension only
+}
+
+Get-ChildItem . | Foreach-Object {
+	$bn = $_.BaseName
+    ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
+}

@@ -107,6 +107,8 @@ map <Leader>run :silent !%:p<CR>
 imap jj <Esc>
 nmap <S-Enter> o<Esc>
 nmap <CR> i<CR><Esc>kA
+nmap Y y$
+nmap S ciw
 nnoremap 0 ^
 nnoremap ^ 0
 nnoremap <Space> i<Space><Esc>

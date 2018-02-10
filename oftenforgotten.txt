@@ -1,13 +1,9 @@
-Path is in C:\Users\Thomas\AppData\Local
+The Windows Path is in C:\Users\Thomas\AppData\Local
 
 ##VIM
 di(							#in Vim, di( means delete in ()
 dt(							#In Vim, dt( means delete to (
 "a"ap						#The command pastes the register in a as literal text 
-
-##BASH
-grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
-grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
 
 ##GIT
 In Git, HEAD refers to the current node you are in
@@ -20,13 +16,29 @@ Types of git resets:
 	--mixed: The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.
 	--hard: The staged snapshot and the working directory are both updated to match the specified commit.
 
-Git revert undoes changes by creating a new commit
-
-Git reflog shows all commits, even deleted ones
-
+git revert	#undoes changes by creating a new commit
+git reflog	#shows all commits, even deleted ones
 git rm --cached <filename>			#Removes a file from your staging area
 
+##Virtualbox
+sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
+##Terminal
+
+:set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
+find .		#searches in current directory
+<c-z>		#Stops any running process (but does not kill!)
+bg			#If there is a stopped procedure, run any stopped procedure in the background
+cut			#cut the lines vertically
+cut -d ')' -f 2		#Cut the lines that have a ) char, print the second one
+grep		#Cut which lines you want
+grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
+grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
+sed			#Cut out things from the line
+sort		#sorts any stdin that you want
+sort -u		#sorts without duplicates
+sort -bgr	#sort according to numerics, in reverse order (most to least impt), ignoring leading blanks
+<<HERE		#Creates a file that is temporary from a stdin??? Need to read
 
 ##Powershell
 Get-ChildItem . | Foreach-Object {

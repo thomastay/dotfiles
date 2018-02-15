@@ -4,6 +4,8 @@ The Windows Path is in C:\Users\Thomas\AppData\Local
 di(							#in Vim, di( means delete in ()
 dt(							#In Vim, dt( means delete to (
 "a"ap						#The command pastes the register in a as literal text 
+]s							#Navigate around in spellcheck
+zg							#Add a word to spellfile
 
 ##GIT
 In Git, HEAD refers to the current node you are in

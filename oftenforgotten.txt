@@ -40,6 +40,7 @@ sort -u		#sorts without duplicates
 sort -bgr	#sort according to numerics, in reverse order (most to least impt), ignoring leading blanks
 <<HERE		#Creates a file that is temporary from a stdin??? Need to read
 
+
 ##Powershell
 Get-ChildItem . | Foreach-Object {
     echo $_.Name 
@@ -51,3 +52,6 @@ Get-ChildItem . | Foreach-Object {
 	$bn = $_.BaseName
     ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
 }
+
+##ssh
+The SSH config file allows you to input several names "Host name" for your files

@@ -55,3 +55,6 @@ Get-ChildItem . | Foreach-Object {
 
 ##ssh
 The SSH config file allows you to input several names "Host name" for your files
+
+##Makefiles
+make by default runs the first rule it finds. So, ideally you want make all to be the first rule (by tradition)

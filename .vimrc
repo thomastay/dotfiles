@@ -1,4 +1,4 @@
-"Leader key and my own key settings
+eLeader key and my own key settings
 let mapleader = ","
 
 "For Vundle
@@ -69,6 +69,7 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gd :Gdiff
 nmap <leader>gl :Git local 
+nmap <leader>gp :Git push
 
 
 " For spellchecking
@@ -100,7 +101,7 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 "Mapping keys
-map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
+map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
 map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys
@@ -111,6 +112,7 @@ nmap Y y$
 nmap S ciw
 nnoremap 0 ^
 nnoremap ^ 0
+nnoremap q: :q
 nnoremap <Space> i<Space><Esc>
 
 command! W write
@@ -124,5 +126,7 @@ let @s='a$ s.t. if $'
 let @e='i\begin{enumerate}[label = (\alph*)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\b &= a\end{align*}jjkk0'
+let @m='\left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix} \right)'
+let @d='\frac{du}{dt}'
 
 

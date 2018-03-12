@@ -55,4 +55,4 @@ Get-ChildItem . | Foreach-Object {
     ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
 }
 
-mklink /H [Link] [Target]		#Symbolic Link - Windows
+mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL)

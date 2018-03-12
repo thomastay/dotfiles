@@ -1,4 +1,4 @@
-eLeader key and my own key settings
+"Leader key and my own key settings
 let mapleader = ","
 
 "For Vundle

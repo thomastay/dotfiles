@@ -4,6 +4,8 @@ The Windows Path is in C:\Users\Thomas\AppData\Local
 di(							#in Vim, di( means delete in ()
 dt(							#In Vim, dt( means delete to (
 "a"ap						#The command pastes the register in a as literal text 
+]s							#Navigate around in spellcheck
+zg							#Add a word to spellfile
 
 ##GIT
 In Git, HEAD refers to the current node you are in
@@ -42,6 +44,7 @@ sort -bgr	#sort according to numerics, in reverse order (most to least impt), ig
 head *		#Prints the head of everything in the directory
 
 
+ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu
 
 ##Powershell
 Get-ChildItem . | Foreach-Object {
@@ -54,6 +57,7 @@ Get-ChildItem . | Foreach-Object {
 	$bn = $_.BaseName
     ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
 }
+mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL)
 
 ##ssh
 The SSH config file allows you to input several names "Host name" for your files

@@ -82,6 +82,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
+set smartindent
 set number
 set cursorline
 set hidden				"For buffers
@@ -92,7 +93,26 @@ set textwidth=0
 set wrapmargin=0
 set formatoptions-=cro
 set splitright
+set backspace=indent,eol,start
 " set splitbelow
+
+" Edit this file
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" C++ includes
+iabbrev #a #include <algorithm>
+iabbrev #d #include <deque>
+iabbrev #i #include <iostream>
+iabbrev #l #include <limits>
+iabbrev #n #include <numeric>
+iabbrev #q #include <queue>
+iabbrev #r #include <random>
+iabbrev #u #include <utility>
+iabbrev #m #include <unordered_map>
+iabbrev #v #include <vector>
+iabbrev iuns using namespace std;
+iabbrev imain int main(int *argc, char **argv) {<cr> return 0;<cr>}
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -100,8 +120,16 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" Movement
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-N> gT
+map <C-M> gt
+
 "Mapping keys
-map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
+map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
 map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys
@@ -122,11 +150,13 @@ command! Wq wq
 
 "Macros
 let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	
-let @s='a$ s.t. if $'
 let @e='i\begin{enumerate}[label = (\alph*)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
-let @a='o\begin{align*}a &= b\\b &= a\end{align*}jjkk0'
+let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
 let @m='\left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix} \right)'
 let @d='\frac{du}{dt}'
 
 
+"Pasting shortcuts
+let @s=' \text{ s.t. } '
+let @i='^{-1}'

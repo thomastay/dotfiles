@@ -61,7 +61,7 @@ Get-ChildItem . | Foreach-Object {
 	$bn = $_.BaseName
     ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
 }
-mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL)
+mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL) Note that link is the link itself, target is the place where the actual file lives
 
 ##ssh
 The SSH config file allows you to input several names "Host name" for your files

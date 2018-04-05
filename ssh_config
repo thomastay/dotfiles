@@ -1,0 +1,10 @@
+#Personal GitHub
+Host github.com
+  HostName github.com
+    User thomastayac
+	  IdentityFile ~/.ssh/id_rsa_personal
+
+#Gitlab
+Host gitlab.eecs.umich.edu
+	User ttay
+	IdentityFile ~/.ssh/id_rsa_personal

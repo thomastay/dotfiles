@@ -43,6 +43,10 @@ sort -bgr	#sort according to numerics, in reverse order (most to least impt), ig
 <<HERE		#Creates a file that is temporary from a stdin??? Need to read
 head *		#Prints the head of everything in the directory
 
+find -type f -path "*/hw*/*/cpp"	#Searches everything with a subdirectory hw and is a cpp file
+find . -type f -name "*.cpp" -exec grep "vector< *vector< *TableEntry *> *> *\w*;" {} \; | grep -v iter | sed "s/.*([^;]*);/\1/
+#Doesn't really work, but useful
+
 
 ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu
 
@@ -65,3 +69,10 @@ The SSH config file allows you to input several names "Host name" for your files
 ##Makefiles
 make by default runs the first rule it finds. So, ideally you want make all to be the first rule (by tradition)
 .PHONY declares which rules don't actually make a file, and so the compiler won't check for whether clean is up to date or not, it'll just run the command no matter what
+
+##gdb
+gdb --tui [file]	#gdb has a tui mode; and in this mode. 
+C-s					#enters single key mode
+list				#Shows the current source code
+disable [breakpt]	#Disables the specified breakpoint by index
+

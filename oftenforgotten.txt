@@ -45,10 +45,17 @@ head *		#Prints the head of everything in the directory
 
 find -type f -path "*/hw*/*/cpp"	#Searches everything with a subdirectory hw and is a cpp file
 find . -type f -name "*.cpp" -exec grep "vector< *vector< *TableEntry *> *> *\w*;" {} \; | grep -v iter | sed "s/.*([^;]*);/\1/
-#Doesn't really work, but useful
+find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | wc -l			# -L follows links, -exec tells you to execute the instruction afterwards
+find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
+find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
+
 
 
 ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu
+
+##Regex
++				#One or more matches
+[^;, ]			#Ignore all of semicolon, comma, whitespace
 
 ##Powershell
 Get-ChildItem . | Foreach-Object {

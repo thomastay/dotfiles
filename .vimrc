@@ -129,7 +129,7 @@ map <C-N> gT
 map <C-M> gt
 
 "Mapping keys
-map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
+map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
 map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys

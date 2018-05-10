@@ -12,13 +12,17 @@ call vundle#begin('$HOME/vimfiles/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'vim-latex/vim-latex'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'craigemery/vim-autotag'
+"Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -34,7 +38,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-"
+
+""""""-----------PLUGIN CONFIGS-------------------
 " For Airline
 let g:airline_theme='simple'
 " Enable the list of buffers
@@ -58,11 +63,6 @@ nmap <leader>gt :BuffergatorMruCycleNext<cr>
 nmap <leader>gT :BuffergatorMruCyclePrev<cr>
 nmap <leader>tt :edit 
 
-"For Latex
-" filetype plugin on
-" set shellslash
-" filetype indent on
-
 " For fugitive (Git)
 nmap <leader>ga :Git add %:p<CR><CR>
 nmap <leader>gs :Gstatus<CR>
@@ -71,6 +71,12 @@ nmap <leader>gd :Gdiff
 nmap <leader>gl :Git local 
 nmap <leader>gp :Git push
 
+"For YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader> gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+""""""-----------END OF PLUGIN CONFIGS-------------------
 
 " For spellchecking
 nmap <leader>sc :setlocal spell spelllang=en_us<CR>
@@ -81,6 +87,8 @@ syntax enable
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set textwidth=79
+set expandtab
 set autoindent
 set smartindent
 set number
@@ -89,12 +97,16 @@ set hidden				"For buffers
 set wrap
 set linebreak
 set nolist  " list disables linebreak
-set textwidth=0
 set wrapmargin=0
 set formatoptions-=cro
 set splitright
 set backspace=indent,eol,start
-" set splitbelow
+set ff=unix
+set encoding=utf-8
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 " Edit this file
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -103,6 +115,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " C++ includes
 iabbrev #a #include <algorithm>
 iabbrev #d #include <deque>
+iabbrev #c #include <cmath>
 iabbrev #i #include <iostream>
 iabbrev #l #include <limits>
 iabbrev #n #include <numeric>
@@ -113,6 +126,23 @@ iabbrev #m #include <unordered_map>
 iabbrev #v #include <vector>
 iabbrev iuns using namespace std;
 iabbrev imain int main(int *argc, char **argv) {<cr> return 0;<cr>}
+
+"Temporaryily disable this function
+"nmap <leader>g :call Google()<CR>
+fun! Google()
+	let keyword = expand("<cword>")
+	let url = "http://www.google.com/search?q=" . keyword
+	let path = "C:/Program Files/Mozilla Firefox/"
+	exec 'silent !"' . path . 'firefox.exe" ' . url
+endfun
+
+" Bad Whitespace
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h, *.cpp match BadWhitespace /\s\+$/
+
+"VirtualEnv support 
+""python with virtualenv support
+"Temporarily disabled
+
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>

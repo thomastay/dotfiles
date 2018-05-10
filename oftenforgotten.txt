@@ -25,7 +25,7 @@ git rm --cached <filename>			#Removes a file from your staging area
 ##Virtualbox
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
-##Terminal
+##Bash / Terminal
 
 :set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
 find .		#searches in current directory
@@ -49,6 +49,10 @@ find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEn
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
 
+2>&1		#Redirects standard error to standard output
+command > out 2>eror	#Redirects stdout to one file and stderr to another
+command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
+command &> out
 
 
 ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu

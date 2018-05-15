@@ -164,8 +164,7 @@ map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys
 imap jj <Esc>
-nmap <S-Enter> o<Esc>
-nmap <CR> i<CR><Esc>kA
+nnoremap <CR> o<Esc>
 nmap Y y$
 nmap S ciw
 nnoremap 0 ^
@@ -174,7 +173,7 @@ nnoremap q: :q
 nnoremap <Space> i<Space><Esc>
 
 command! W write
-command! Q o
+command! Q quit
 command! WQ wq
 command! Wq wq
 

@@ -118,5 +118,5 @@ fi
 
 export EDITOR="vim"
 export GIT_EDITOR="vim"
-. ~/.bash-git-prompt/gitprompt.sh
-GIT_PROMPT_ONLY_IN_REPO=1
+#. ~/.bash-git-prompt/gitprompt.sh
+#GIT_PROMPT_ONLY_IN_REPO=1

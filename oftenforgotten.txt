@@ -6,6 +6,15 @@ dt(							#In Vim, dt( means delete to (
 "a"ap						#The command pastes the register in a as literal text 
 ]s							#Navigate around in spellcheck
 zg							#Add a word to spellfile
+:set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
+vim -o[N]                Open N windows (default: one for each file)
+vim -O[N]                Like -o but split vertically
+
+##Git-fugitive
+:Gdiff              #Starts up the merge window
+:diffget //2        #From the merge window, gets the buffer from the target
+:diffget //3        #From the merge window, gets the buffer from the merge
+:diffupdate         #Updates the merge window
 
 ##GIT
 In Git, HEAD refers to the current node you are in
@@ -21,13 +30,13 @@ Types of git resets:
 git revert	#undoes changes by creating a new commit
 git reflog	#shows all commits, even deleted ones
 git rm --cached <filename>			#Removes a file from your staging area
+git stash   #Stashes the current working directory and reverts to HEAD
+git stash pop   #Retrieves the last stash and pops it. 
 
 ##Virtualbox
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
 ##Bash / Terminal
-
-:set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
 find .		#searches in current directory
 <c-z>		#Stops any running process (but does not kill!)
 bg			#If there is a stopped procedure, run any stopped procedure in the background
@@ -86,4 +95,3 @@ gdb --tui [file]	#gdb has a tui mode; and in this mode.
 C-s					#enters single key mode
 list				#Shows the current source code
 disable [breakpt]	#Disables the specified breakpoint by index
-

@@ -74,6 +74,7 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit -v -q<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Git local 
+set diffopt+=vertical
 
 """"""-----------END OF PLUGIN CONFIGS-------------------
 

@@ -1,5 +1,12 @@
 The Windows Path is in C:\Users\Thomas\AppData\Local
 
+##Python Virtualenvironments
+. venv/bin/activate #Activates the virtual environment
+deactivate      #Deactivates the current virtual environment
+pip freeze > requirements.txt #Saves the virtual environment
+pip install -r requirements.txt #install from requirements
+
+
 ##VIM
 di(							#in Vim, di( means delete in ()
 dt(							#In Vim, dt( means delete to (

@@ -103,10 +103,15 @@ set splitright
 set backspace=indent,eol,start
 set ff=unix
 set encoding=utf-8
+let python_highlight_all=1
+set tags=tags;/             "Look for tags upwards
+
 
 " Enable folding
 set foldmethod=indent
-set foldlevel=99
+"set foldlevel=99
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 "Mapping keys
 map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
@@ -167,7 +172,7 @@ imap jj <Esc>
 nnoremap <CR> o<Esc>
 nnoremap 0 ^
 nnoremap ^ 0
-nnoremap <Space> i<Space><Esc>
+nnoremap <Space> za
 nmap S ciw
 nmap Y y$
 

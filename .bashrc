@@ -120,3 +120,14 @@ export EDITOR="vim"
 export GIT_EDITOR="vim"
 . ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
+
+h=$(date "+%H")
+if [ $h -lt 12 ]; then
+    echo "Top of the morning to ya, Thomas!"
+elif [ $h -lt 18 ]; then
+    echo "Afternoon, Thomas!"
+else
+    echo "Evening, gentlemen"
+fi
+fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+echo ""

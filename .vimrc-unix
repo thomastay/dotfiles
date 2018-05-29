@@ -66,7 +66,7 @@ nmap <leader>tt :edit
 
 "For YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader> gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " For fugitive (Git)
 nmap <leader>ga :Git add %:p<CR><CR>
@@ -74,6 +74,8 @@ nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit -v -q<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Git local 
+nmap <leader>gw :Gwrite<CR>
+nmap <leader>gr :Gread<CR>
 set diffopt+=vertical
 
 """"""-----------END OF PLUGIN CONFIGS-------------------

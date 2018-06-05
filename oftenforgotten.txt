@@ -23,7 +23,7 @@ vim -O[N]                Like -o but split vertically
 :diffget //3        #From the merge window, gets the buffer from the merge
 :diffupdate         #Updates the merge window
 
-##GIT
+##Git
 In Git, HEAD refers to the current node you are in
 In the shell, head refers to the command to get one line (or more, depending on your commands)
 HEAD^ goes back one node
@@ -39,6 +39,8 @@ git reflog	#shows all commits, even deleted ones
 git rm --cached <filename>			#Removes a file from your staging area
 git stash   #Stashes the current working directory and reverts to HEAD
 git stash pop   #Retrieves the last stash and pops it. 
+
+git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
 
 ##Virtualbox
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
@@ -102,3 +104,7 @@ gdb --tui [file]	#gdb has a tui mode; and in this mode.
 C-s					#enters single key mode
 list				#Shows the current source code
 disable [breakpt]	#Disables the specified breakpoint by index
+
+##Python
+{:02d}.format()     #Formats a number into two digits
+break               #Breaks out of a FOR loop (not if)

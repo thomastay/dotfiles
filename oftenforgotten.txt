@@ -1,13 +1,29 @@
 The Windows Path is in C:\Users\Thomas\AppData\Local
 
+##Python Virtualenvironments
+. venv/bin/activate #Activates the virtual environment
+deactivate      #Deactivates the current virtual environment
+pip freeze > requirements.txt #Saves the virtual environment
+pip install -r requirements.txt #install from requirements
+
+
 ##VIM
 di(							#in Vim, di( means delete in ()
 dt(							#In Vim, dt( means delete to (
 "a"ap						#The command pastes the register in a as literal text 
 ]s							#Navigate around in spellcheck
 zg							#Add a word to spellfile
+:set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
+vim -o[N]                Open N windows (default: one for each file)
+vim -O[N]                Like -o but split vertically
 
-##GIT
+##Git-fugitive
+:Gdiff              #Starts up the merge window
+:diffget //2        #From the merge window, gets the buffer from the target
+:diffget //3        #From the merge window, gets the buffer from the merge
+:diffupdate         #Updates the merge window
+
+##Git
 In Git, HEAD refers to the current node you are in
 In the shell, head refers to the command to get one line (or more, depending on your commands)
 HEAD^ goes back one node
@@ -21,13 +37,15 @@ Types of git resets:
 git revert	#undoes changes by creating a new commit
 git reflog	#shows all commits, even deleted ones
 git rm --cached <filename>			#Removes a file from your staging area
+git stash   #Stashes the current working directory and reverts to HEAD
+git stash pop   #Retrieves the last stash and pops it. 
+
+git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
 
 ##Virtualbox
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
-##Terminal
-
-:set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
+##Bash / Terminal
 find .		#searches in current directory
 <c-z>		#Stops any running process (but does not kill!)
 bg			#If there is a stopped procedure, run any stopped procedure in the background
@@ -49,6 +67,10 @@ find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEn
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
 
+2>&1		#Redirects standard error to standard output
+command > out 2>eror	#Redirects stdout to one file and stderr to another
+command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
+command &> out
 
 
 ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu
@@ -84,3 +106,7 @@ list				#Shows the current source code
 disable [breakpt]	#Disables the specified breakpoint by index
 
 utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )"
+
+##Python
+{:02d}.format()     #Formats a number into two digits
+break               #Breaks out of a FOR loop (not if)

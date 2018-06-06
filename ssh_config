@@ -6,5 +6,6 @@ Host github.com
 
 #Gitlab
 Host gitlab.eecs.umich.edu
+	HostName gitlab.eecs.umich.edu
 	User ttay
 	IdentityFile ~/.ssh/id_rsa_personal

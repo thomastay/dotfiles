@@ -35,7 +35,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 " For Airline
-let g:airline_theme='luna'
+let g:airline_theme='simple'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " " Show just the filename
@@ -125,6 +125,7 @@ nmap S ciw
 nmap Y y$
 
 command! W write
+command! Q quit
 command! WQ wq
 command! Wq wq
 

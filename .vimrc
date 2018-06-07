@@ -23,6 +23,7 @@ Plugin 'vim-scripts/indentpython.vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'majutsushi/tagbar'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,14 +67,22 @@ nmap <leader>tt :edit
 " For fugitive (Git)
 nmap <leader>ga :Git add %:p<CR><CR>
 nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gd :Gdiff
+nmap <leader>gc :Gcommit -v -q<CR>
+nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Git local 
-nmap <leader>gp :Git push
+nmap <leader>gw :Gwrite<CR>
+nmap <leader>gr :Gread<CR>
+set diffopt+=vertical
 
 "For YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader> gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"For Tagbar
+let g:tagbar_left = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+nnoremap <leader>tb :TagbarToggle<CR>
 
 
 """"""-----------END OF PLUGIN CONFIGS-------------------
@@ -101,8 +110,10 @@ set wrapmargin=0
 set formatoptions-=cro
 set splitright
 set backspace=indent,eol,start
-set ff=unix
+set ff=dos
 set encoding=utf-8
+let python_highlight_all=1
+set tags=tags;/             "Look for tags upwards
 
 " Enable folding
 set foldmethod=indent
@@ -151,12 +162,12 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Movement
-map <C-H> <C-W>h
-map <C-L> <C-W>l
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-N> gT
-map <C-M> gt
+noremap <C-H> <C-W>5<
+noremap <C-L> <C-W>5>
+noremap <C-J> <C-W>5-
+noremap <C-K> <C-W>5+
+noremap <C-N> gT
+noremap <C-M> gt
 
 "Mapping keys
 map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
@@ -164,7 +175,7 @@ map <Leader>run :silent !%:p<CR>
 
 "Remapping of Actual Keys
 imap jj <Esc>
-nnoremap <CR> o<Esc>
+nnoremap <CR> i<CR><Esc>
 nmap Y y$
 nmap S ciw
 nnoremap 0 ^

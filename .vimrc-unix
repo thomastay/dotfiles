@@ -23,6 +23,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'majutsushi/tagbar'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,6 +67,7 @@ nmap <leader>tt :edit
 
 "For YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_python_binary_path = 'python3'
 "map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " For fugitive (Git)
@@ -77,6 +79,12 @@ nmap <leader>gl :Git local
 nmap <leader>gw :Gwrite<CR>
 nmap <leader>gr :Gread<CR>
 set diffopt+=vertical
+
+"For Tagbar
+let g:tagbar_left = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+nnoremap <leader>tb :TagbarToggle<CR>
 
 """"""-----------END OF PLUGIN CONFIGS-------------------
 
@@ -161,12 +169,12 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Movement
-map <C-H> <C-W>h
-map <C-L> <C-W>l
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-N> gT
-map <C-M> gt
+noremap <C-H> <C-W>5<
+noremap <C-L> <C-W>5>
+noremap <C-J> <C-W>5-
+noremap <C-K> <C-W>5+
+noremap <C-N> gT
+noremap <C-M> gt
 
 "Remapping of Actual Keys
 "Note: Made a major change. Now, carriage return returns a newline

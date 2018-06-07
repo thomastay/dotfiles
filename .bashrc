@@ -123,7 +123,7 @@ GIT_PROMPT_ONLY_IN_REPO=1
 
 h=$(date "+%H")
 if [ $h -lt 12 ]; then
-    echo "Top of the morning to ya, Thomas!"
+    echo "Top o' the morning to ya, Thomas!"
 elif [ $h -lt 18 ]; then
     echo "Afternoon, Thomas!"
 else

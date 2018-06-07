@@ -105,6 +105,8 @@ C-s					#enters single key mode
 list				#Shows the current source code
 disable [breakpt]	#Disables the specified breakpoint by index
 
+utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )"
+
 ##Python
 {:02d}.format()     #Formats a number into two digits
 break               #Breaks out of a FOR loop (not if)

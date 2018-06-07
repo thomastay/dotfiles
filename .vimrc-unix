@@ -43,7 +43,7 @@ filetype plugin indent on    " required
 """"""-----------PLUGIN CONFIGS-------------------
 
 " For Airline
-let g:airline_theme='luna'
+let g:airline_theme='simple'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " " Show just the filename

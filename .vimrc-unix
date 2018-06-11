@@ -92,6 +92,13 @@ nnoremap <leader>tb :TagbarToggle<CR>
 nmap <leader>sc :setlocal spell spelllang=en_us<CR>
 nmap <leader>ns :setlocal nospell<CR>
 
+" For Browser
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_browse_split=2
+let g:netrw_winsize=25
+nmap <leader>nv :Vex<CR>
+
 "In general
 syntax enable
 set tabstop=4
@@ -171,8 +178,8 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Movement
 noremap <C-H> <C-W>5<
 noremap <C-L> <C-W>5>
-noremap <C-J> <C-W>5-
-noremap <C-K> <C-W>5+
+noremap <C-J> <C-W>3-
+noremap <C-K> <C-W>3+
 noremap <C-N> gT
 noremap <C-M> gt
 

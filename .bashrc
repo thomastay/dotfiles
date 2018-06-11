@@ -131,3 +131,10 @@ else
 fi
 fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
 echo ""
+
+alias parkit="cd ~/caen/parkit-app; \
+    source venv/bin/activate; \
+    ctags -R; \
+    cd parkit;
+"
+

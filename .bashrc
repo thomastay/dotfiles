@@ -137,4 +137,7 @@ alias parkit="cd ~/caen/parkit-app; \
     ctags -R; \
     cd parkit;
 "
-
+#For tmux
+export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
+alias tmux="tmux -2"
+export TERM=xterm-256color

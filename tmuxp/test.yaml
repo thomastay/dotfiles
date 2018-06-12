@@ -1,0 +1,12 @@
+session_name: test
+windows:
+    - window_name: Test 
+      panes:
+        - shell_command:
+            - echo 'did you know'
+            - cd ~/caen/parkit-app
+            - source venv/bin/activate
+            - cd parkit
+        - shell_command: echo 'single-commands'
+        - echo 'for panes'
+

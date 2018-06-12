@@ -3,6 +3,7 @@
 	name = ttay
 	email = ttay@umich.edu
 [alias]
+    a = add
 	co = checkout
 	br = branch
 	ci = commit

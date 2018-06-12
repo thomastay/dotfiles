@@ -73,7 +73,7 @@ command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a fil
 command &> out
 
 
-ln -s [Target] [Link]	#Creates a Symbolic link in Ubuntu
+ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubuntu
 
 ##Regex
 +				#One or more matches

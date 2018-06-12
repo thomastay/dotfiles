@@ -1,4 +1,4 @@
-"Leader key and my own key settings
+"Leader key and my own key settings. This has to come before plugins
 let mapleader = ","
 
 "For Vundle
@@ -24,6 +24,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'majutsushi/tagbar'
+Plugin 'pangloss/vim-javascript'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -123,6 +124,11 @@ set encoding=utf-8
 let python_highlight_all=1
 set tags=tags;/             "Look for tags upwards
 
+"Case insensitive search for lowercase query, case sensitive for mixed case
+set incsearch       "Start searching with incomplete tag
+set ignorecase
+set smartcase
+set hlsearch
 
 " Enable folding
 set foldmethod=indent

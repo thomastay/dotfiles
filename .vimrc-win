@@ -21,7 +21,7 @@ Plugin 'craigemery/vim-autotag'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'majutsushi/tagbar'
-Plugin 'pangloss/vim-javascript'
+Plugin 'matze/vim-tex-fold'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -83,6 +83,9 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 nnoremap <leader>tb :TagbarToggle<CR>
 
+"For Tex
+let g:tex_fold_enabled=1
+
 
 """"""-----------END OF PLUGIN CONFIGS-------------------
 
@@ -134,7 +137,7 @@ set smartcase
 set hlsearch
 
 " Enable folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 
 " Edit this file

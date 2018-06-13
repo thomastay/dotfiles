@@ -2,4 +2,7 @@
 
 My personal vimrc
 
-Note that the vimrc has line endings for Windows. You will need to run :set ff=unix in Linux to be able to use it. And you will also need to change the $HOME directories. 
+I have two vimrcs, one for windows and one for linux. The Windows one is more
+suited for LaTEX development and so has less plugins. This is because I write
+LaTEX (for now) in Windows
+

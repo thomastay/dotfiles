@@ -9,4 +9,3 @@ windows:
             - cd parkit
         - shell_command: echo 'single-commands'
         - echo 'for panes'
-

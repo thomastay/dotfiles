@@ -11,7 +11,7 @@
     last = log -1 HEAD
     unstage = reset HEAD --
     lazy = "!f() { git commit -a -m \"$@\" && git push; }; f"
-    lazyall = "!f() { git add. -A &&  git commit -m \"$@\" && git push; }; f"
+    lazyall = "!f() { git add . -A &&  git commit -m \"$@\" && git push; }; f"
     local = "!f() { git add . -A && git commit -a -m \"$@\"; }; f"
     ll = log --stat --abbrev-commit
     graph = log --graph --full-history --all --color --pretty=tformat:"%C(red)%h%C(reset)%x09%C(green)%d%C(reset)%C(bold)%s%C(reset)%C(yellow)(%an)%C(reset)"

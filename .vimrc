@@ -77,6 +77,7 @@ set diffopt+=vertical
 "For YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader> gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+set omnifunc=syntaxcomplete#Complete
 
 "For Tagbar
 let g:tagbar_left = 1

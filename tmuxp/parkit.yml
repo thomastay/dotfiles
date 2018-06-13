@@ -1,0 +1,22 @@
+session_name: parkit
+windows:
+    - window_name: vim 
+      focus: true
+      panes:
+        - shell_command:
+            - cd ~/caen/parkit-app
+            - source venv/bin/activate
+            - vim -o parkit/static/js/common.js parkit/templates/index.html parkit/templates/lot.html -c "wincmd H"
+    - window_name: server-shell 
+      layout: main-vertical
+      panes:
+        - shell_command:
+            - cd ~/caen/parkit-app
+            - source venv/bin/activate
+            - ctags -R
+            - python run.py
+        - shell_command:
+            - cd ~/caen/parkit-app
+            - source venv/bin/activate
+            - cd parkit
+            - git last

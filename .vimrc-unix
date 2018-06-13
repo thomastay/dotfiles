@@ -87,6 +87,9 @@ let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 nnoremap <leader>tb :TagbarToggle<CR>
 
+"For Syntastic
+let g:syntastic_javascript_checkers=['eslint']
+
 """"""-----------END OF PLUGIN CONFIGS-------------------
 
 " For spellchecking
@@ -100,13 +103,20 @@ let g:netrw_browse_split=2
 let g:netrw_winsize=25
 nmap <leader>nv :Vex<CR>
 
-"In general
-syntax enable
+"Filetype indents
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set textwidth=79
 set expandtab
+
+"In general
+syntax enable
+set bg=dark
+set textwidth=79
 set autoindent
 set smartindent
 set number
@@ -176,16 +186,16 @@ endfun
 
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> <C-W>5<
+nnoremap <Right> <C-W>5>
+nnoremap <Up> <C-W>3-
+nnoremap <Down> <C-W>3+
 
 " Movement
-noremap <C-H> <C-W>5<
-noremap <C-L> <C-W>5>
-noremap <C-J> <C-W>3-
-noremap <C-K> <C-W>3+
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
 noremap <C-N> gT
 noremap <C-M> gt
 

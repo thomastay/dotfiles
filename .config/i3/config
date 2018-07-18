@@ -21,7 +21,6 @@ exec_always --no-startup-id ~/.scripts/remap
 #monitor.sh
 exec_always --no-startup-id xrandr --dpi 192
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-#exec xcompmgr -c &
 exec --no-startup-id compton -CGb
 exec --no-startup-id wal -a 75 -i ~/Pictures/lily-banse-181917-unsplash.jpg
 exec --no-startup-id .scripts/fallbackToConnectedDisplay.sh

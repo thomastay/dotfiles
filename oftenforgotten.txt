@@ -72,6 +72,7 @@ command > out 2>eror	#Redirects stdout to one file and stderr to another
 command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
 command &> out
 
+xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
 
 ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubuntu
 
@@ -110,3 +111,7 @@ utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )"
 ##Python
 {:02d}.format()     #Formats a number into two digits
 break               #Breaks out of a FOR loop (not if)
+
+## Ubuntu
+layout.css.devPixelsPerPx   #1.5 for laptop, 1 for normal
+

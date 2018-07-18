@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#This script is called by i3 on startup
+
+set xkbmap -option ctrl:nocaps

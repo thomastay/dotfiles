@@ -147,7 +147,7 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 "Mapping keys
-map <Leader>ll :silent !pdflatex.exe -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
+map <Leader>ll :silent !pdflatex -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
 map <Leader>run :!%:p
 
 " Edit this file

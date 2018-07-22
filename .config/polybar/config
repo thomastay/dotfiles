@@ -461,7 +461,7 @@ label = CPU %percentage:2:3%%
 label-spacing = 7
 format-label-foreground = #ed4337
 
-bar-load-width= 5
+bar-load-width= 10
 bar-load-indicator= |
 bar-load-fill= ─
 bar-load-empty= ─
@@ -485,7 +485,7 @@ format = <label> <bar-used>
 label = RAM %percentage_used:2:3%%
 label-spacing = 7
 
-bar-used-width= 5
+bar-used-width= 10
 bar-used-indicator= |
 bar-used-fill= ─
 bar-used-empty= ─

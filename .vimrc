@@ -116,16 +116,11 @@ set expandtab
 "In general
 syntax enable
 set bg=dark
-set textwidth=80
 set autoindent
 set smartindent
 set number
 set cursorline
 set hidden				"For buffers
-set wrap
-set linebreak
-set nolist  " list disables linebreak
-set wrapmargin=0
 set formatoptions-=cro
 set splitright
 set backspace=indent,eol,start
@@ -133,6 +128,14 @@ set ff=unix
 set encoding=utf-8
 let python_highlight_all=1
 set tags=tags;/             "Look for tags upwards
+
+"Wrapping
+set wrap
+set wrapmargin=0
+set textwidth=80
+set linebreak
+set nolist  " list disables linebreak
+autocmd Filetype tex,text,markdown setlocal textwidth=0
 
 "Case insensitive search for lowercase query, case sensitive for mixed case
 set incsearch       "Start searching with incomplete tag
@@ -185,6 +188,7 @@ noremap <C-M> gt
 "Remapping of Actual Keys
 "Note: Made a major change. Now, carriage return returns a newline
 imap jj <Esc>
+inoremap <S-Tab> <C-d>
 nnoremap <CR> o<Esc>
 nnoremap 0 ^
 nnoremap ^ 0

@@ -71,10 +71,12 @@ find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>
 command > out 2>eror	#Redirects stdout to one file and stderr to another
 command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
 command &> out
-
 xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
-
 ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubuntu
+sudo mount /location/of/device /location/of/mount/point #Mount a device
+lsblk       #Shows the location of devices and their mount points
+lsusb       #Shows the output of the USB devices list
+
 
 ##Regex
 +				#One or more matches

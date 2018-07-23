@@ -381,7 +381,7 @@ menu-2-1-exec = menu-open-0
 
 [module/battery]
 type = internal/battery
-full-at = 99
+;full-at = 99
 
 format-charging = <animation-charging>  <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
@@ -414,6 +414,7 @@ animation-charging-framerate = 750
 time-format = %H:%M
 label-discharging = %percentage%% (%time%)
 label-charging = %percentage%% (%time%)
+label-full = %percentage%% (F)
 
 ;# WIRELESS
 [module/wireless-network]

@@ -116,6 +116,38 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#### User defined modules
+USER=Thomas
+CURRDATE=$(date +%d%m)
+
+if [ "$CURRDATE" = "0807" ]; then
+    echo "$(tput setaf 1) $(tput smso)Happy Birthday $USER"
+    tput sgr0;
+    base64 -d <<< "ICAgICAgICAgICB+ICAgICAgICAgICAgICAgICAgfg0KICAgICAqICAgICAgICAgICAgICAgICAgICogICAgICAgICAgICAgICAgKiAgICAgICAqDQogICAgICAgICAgICAgICAgICAqICAgICAgICAgICAgICAgKg0KICB+ICAgICAgICogICAgICAgICAgICAgICAgKiAgICAgICAgIH4gICAgKiAgICAgICAgICANCiAgICAgICAgICAgICAgKiAgICAgICB+ICAgICAgICAqICAgICAgICAgICAgICAqICAgfg0KICAgICAgICAgICAgICAgICAgKSAgICAgICAgICggICAgICAgICApICAgICAgICAgICAgICAqDQogICAgKiAgICB+ICAgICApIChfKSAgICggICAoXykgICApICAgKF8pICggICoNCiAgICAgICAgICAgKiAgKF8pICMgKSAoXykgKSAjICggKF8pICggIyAoXykgICAgICAgKg0KICAgICAgICAgICAgICBfIy4tIyhfKS0jLShfKSMoXyktIy0oXykjLS4jXyAgICANCiAgKiAgICAgICAgIC4nICMgICMgIyAgIyAgIyAjICMgICMgICMgIyAgIyBgLiAgIH4gICAgICoNCiAgICAgICAgICAgOiAgICMgICAgIyAgIyAgIyAgICMgICMgICMgICAgIyAgIDogICANCiAgICB+ICAgICAgOi4gICAgICAgIyAgICAgIyAgICMgICAgICMgICAgICAgLjogICAgICAqDQogICAgICAgICogIHwgYC0uX18gICAgICAgICAgICAgICAgICAgICBfXy4tJyB8ICoNCiAgICAgICAgICAgfCAgICAgIGBgYGBgIiIiIiIiIiIiIiJgYGBgYCAgICAgIHwgICAgICAgICAqDQogICAgICogICAgIHwgICAgICAgICB8IHx8XCB8fil8filcIC8gICAgICAgICB8ICAgIA0KICAgICAgICAgICB8ICAgICAgICAgfH58fH5cfH4gfH4gIHwgICAgICAgICAgfCAgICAgICB+DQogICB+ICAgKiAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICogDQogICAgICAgICAgIHwgICAgICB8fil8fH4pfnx+fCB8fH5cfFwgXCAvICAgICB8ICAgICAgICAgKg0KICAgKiAgICBfLi18ICAgICAgfH4pfHx+XCB8IHx+fHwgL3x+XCB8ICAgICAgfC0uXyAgDQogICAgICAuJyAgICcuICAgICAgfiAgICAgICAgICAgIH4gICAgICAgICAgIC4nICAgYC4gICoNCiAgICAgIDogICAgICBgLS5fXyAgICAgICAgICAgICAgICAgICAgIF9fLi0nICAgICAgOg0KICAgICAgIGAuICAgICAgICAgYGBgYGAiIiIiIiIiIiIiImBgYGBgICAgICAgICAgLicNCiAgICAgICAgIGAtLi5fICAgICAgICAgICAgICAgICAgICAgICAgICAgICBfLi4tJw0KICAgICAgICAgICAgICBgYGBgYCIiIiItLS0tLS0tLS0tLSIiIiJgYGBgYA0K"
+fi
+
+BIRTHDAYS=(
+    "Alice"
+    "0403"
+    "Mary"
+    "0703"
+    "Tony"
+    "2307"
+    "Natalie"
+    "2612"
+)
+BIRTHDAY_SIZE=$(expr ${#BIRTHDAYS[@]} / 2)
+
+for i in $(seq 0 $(expr $BIRTHDAY_SIZE - 1)); do
+    __NAME=${BIRTHDAYS[$(expr 2 \* $i)]}
+    __BIRTHDATE=${BIRTHDAYS[$(expr 2 \* $i + 1)]}
+    if [ $CURRDATE = $__BIRTHDATE ]; then
+        echo "$(tput setaf 1) $(tput smso)Reminder: It is $__NAME's birthday today!"
+        tput sgr0;
+    fi
+done
+
+
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 . ~/.bash-git-prompt/gitprompt.sh
@@ -123,9 +155,9 @@ GIT_PROMPT_ONLY_IN_REPO=1
 
 h=$(date "+%H")
 if [ $h -lt 12 ]; then
-    echo "Top o' the morning to ya, Thomas!"
+    echo "Top o' the morning to ya, $USER!"
 elif [ $h -lt 18 ]; then
-    echo "Afternoon, Thomas!"
+    echo "Afternoon, $USER!"
 else
     echo "Evening, gentlemen"
 fi

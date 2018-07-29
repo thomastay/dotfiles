@@ -76,6 +76,8 @@ ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubunt
 sudo mount /location/of/device /location/of/mount/point #Mount a device
 lsblk       #Shows the location of devices and their mount points
 lsusb       #Shows the output of the USB devices list
+sha256sum -c [SHA256SUM file] # If the SHA256SUM file contains the name of your file
+sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
 
 
 ##Regex

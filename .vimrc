@@ -200,6 +200,7 @@ command! W write
 command! Q quit
 command! WQ wq
 command! Wq wq
+cmap w!! w !sudo tee > /dev/null %
 
 "Macros
 let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	

@@ -100,9 +100,9 @@ font-3 = Material Icons:size=15
 ;   modules-left = cpu ram
 ;   modules-center = xwindow xbacklight
 ;   modules-right = ipc clock
-modules-left = i3 cpu memory
+modules-left = i3 cpu memory temperature
 modules-center = date
-modules-right = wireless-network battery volume powermenu
+modules-right = wireless-network battery volume powermenu 
 
 ; The separator will be inserted between the output of each module
 separator =
@@ -252,13 +252,25 @@ interval = 1
 date =  %a, %b %d
 date-alt =  %Y-%m-%d 
 
-time = " %H:%M"
-time-alt = " %H:%M:%S"
+time = "%H:%M"
+time-TZ = "Asia/Singapore"
+time-2-TZ = "America/Detroit"
+time-alt = "%H:%M:%S"
 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+label = %date%   %time% | %date-2%   %time-2%
 
-label = %date%   %time%
+;[module/date-AA]
+;type = internal/date
+;interval = 1
+;
+;date =  %a, %b %d
+;date-alt =  %Y-%m-%d 
+;
+;time = "%H:%M"
+;time-TZ = "America/Detroit"
+;time-alt = "%H:%M:%S"
+;
+;label = %date%   %time% (AA)
 
 [module/i3]
 
@@ -490,3 +502,27 @@ bar-used-width= 10
 bar-used-indicator= |
 bar-used-fill= ─
 bar-used-empty= ─
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/virtual/hwmon/hwmon0/temp1_input
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60

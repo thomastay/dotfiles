@@ -54,6 +54,7 @@ cut -d ')' -f 2		#Cut the lines that have a ) char, print the second one
 grep		#Cut which lines you want
 grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
 grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
+grep -i #grep case insensitive
 sed			#Cut out things from the line
 sort		#sorts any stdin that you want
 sort -u		#sorts without duplicates
@@ -76,7 +77,7 @@ ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubunt
 sudo mount /location/of/device /location/of/mount/point #Mount a device
 lsblk       #Shows the location of devices and their mount points
 lsusb       #Shows the output of the USB devices list
-sha256sum -c [SHA256SUM file] # If the SHA256SUM file contains the name of your file
+sha256sum -c [SHA256SUM file] --ignore-missing # If the SHA256SUM file contains the name of your file
 sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
 
 

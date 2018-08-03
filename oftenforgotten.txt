@@ -47,6 +47,7 @@ sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the sh
 
 ##Bash / Terminal
 find .		#searches in current directory
+find . -maxdepth 1 -type f  #Finds all files in the current directory but NOT subdirectories
 <c-z>		#Stops any running process (but does not kill!)
 bg			#If there is a stopped procedure, run any stopped procedure in the background
 cut			#cut the lines vertically

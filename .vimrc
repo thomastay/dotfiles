@@ -80,6 +80,7 @@ nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Git local 
 nmap <leader>gw :Gwrite<CR>
 nmap <leader>gr :Gread<CR>
+nmap <leader>gp :Git push<CR>
 set diffopt+=vertical
 
 "For Tagbar
@@ -195,6 +196,12 @@ nnoremap ^ 0
 nnoremap <Space> za
 nmap S ciw
 nmap Y y$
+
+"Matchings
+inoremap ( ()<Esc>i
+inoremap " ""<Esc>i
+inoremap [ []<Esc>i
+"inoremap { {<CR><BS>}<Esc>ko
 
 command! W write
 command! Q quit

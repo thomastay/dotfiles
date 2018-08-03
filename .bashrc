@@ -181,3 +181,6 @@ alias v="vim"
 alias whatstheweather="~/.scripts/weather.sh"
 alias f="firefox &"
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
+alias sv="sudoedit"
+alias vim-all='vim `find . -maxdepth 1 -type f`'
+alias ssa="ssh-add ~/.ssh/id_rsa_personal"

@@ -199,3 +199,7 @@ bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86Display exec ~/.scripts/monitor.sh
 bindsym Shift+XF86Display exec ~/.scripts/second-screen.sh
+bindsym XF86Explorer exec ranger
+#I don't use the mail key, so bind it to the monitor key
+bindsym XF86Mail exec ~/.scripts/monitor.sh
+bindsym Shift+XF86Mail exec ~/.scripts/second-screen.sh

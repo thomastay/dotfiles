@@ -101,6 +101,8 @@ mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHE
 
 ##ssh
 The SSH config file allows you to input several names "Host name" for your files
+ssh-agent       #A client that allows you to add ssh keys
+ssh-add         #The interface to add ssh keys
 
 ##Makefiles
 make by default runs the first rule it finds. So, ideally you want make all to be the first rule (by tradition)
@@ -120,4 +122,10 @@ break               #Breaks out of a FOR loop (not if)
 
 ## Ubuntu
 layout.css.devPixelsPerPx   #1.5 for laptop, 1 for normal
+GRUB_DEFAULT=saved;GRUB_SAVEDEFAULT=true    #/etc/default/grub changes to make it save last boot (see next line)
+sudo update-grub    #Updates grub
+sudo tlp start      #Updates TLP
 
+## Where things are
+/etc/default/tlp    #TLP config files
+/etc/default/grub   #Grub config files

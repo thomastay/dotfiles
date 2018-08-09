@@ -1,0 +1,172 @@
+
+#--------------Linux--------------------
+
+# Find
+find .		#searches in current directory
+find . -maxdepth 1 -type f  #Finds all files in the current directory but NOT subdirectories
+
+# Sed
+grep vs sed		#Cut which lines you want vs Cut out things from the line
+
+# Grep
+grep vs sed		#Cut which lines you want vs Cut out things from the line
+grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
+grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
+grep -i #grep case insensitive
+
+# Sort
+sort		#sorts any stdin that you want
+sort -u		#sorts without duplicates
+sort -bgr	#sort according to numerics, in reverse order (most to least impt), ignoring leading blanks
+
+# Combos
+find -type f -path "*/hw*/*/cpp"	#Searches everything with a subdirectory hw and is a cpp file
+find . -type f -name "*.cpp" -exec grep "vector< *vector< *TableEntry *> *> *\w*;" {} \; | grep -v iter | sed "s/.*([^;]*);/\1/
+find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | wc -l			# -L follows links, -exec tells you to execute the instruction afterwards
+find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
+find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
+
+
+# Graphics
+xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
+
+# Devices & ISOs
+sudo mount /location/of/device /location/of/mount/point #Mount a device
+lsblk       #Shows the location of devices and their mount points
+lsusb       #Shows the output of the USB devices list
+sha256sum -c [SHA256SUM file] --ignore-missing # If the SHA256SUM file contains the name of your file
+sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
+
+# Where things are
+/etc/default/tlp    #TLP config files
+/etc/default/grub   #Grub config files
+/var/log/apt/history.log    #Contains the data from apt installs
+
+# Misc Terminal
+ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubuntu
+<c-z>		#Stops any running process (but does not kill!)
+bg			#If there is a stopped procedure, run any stopped procedure in the background
+cut			#cut the lines vertically
+cut -d ')' -f 2		#Cut the lines that have a ) char, print the second one
+<<EOF		#Read in a file until EOF is written in text
+head *		#Prints the head of everything in the directory
+2>&1		#Redirects standard error to standard output
+command > out 2>eror	#Redirects stdout to one file and stderr to another
+command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
+command &> out
+utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )" #Timing a program to stdout
+
+# For fun
+sl
+apt moo
+telnet  towel.blinkenlights.nl
+traceroute -m 254 -q1 obiwan.scrye.net
+aptitude -v moo
+
+#------------------------------------APPLICATIONS-------------------------------
+
+#--------------Python------------------
+{:02d}.format()     #Formats a number into two digits
+break               #Breaks out of a FOR loop (not if)
+
+# Python Virtualenvironments
+. venv/bin/activate #Activates the virtual environment
+deactivate      #Deactivates the current virtual environment
+pip freeze > requirements.txt #Saves the virtual environment
+pip install -r requirements.txt #install from requirements
+
+# -------------Vim----------------------
+# vim Commands
+di(							#in Vim, di( means delete in ()
+dt(							#In Vim, dt( means delete to (
+"a"ap						#The command pastes the register in a as literal text 
+]s							#Navigate around in spellcheck
+zg							#Add a word to spellfile
+:set ff=unix #this command sets converts the CRLF endings to LF endings for .gitconfig files
+vim -o[N]                Open N windows (default: one for each file)
+vim -O[N]                Like -o but split vertically
+:s/[PAT_1]/\r/g     #Replace all of PAT_1 with a newline
+:%normal f;D        #In every line, go to the first semicolon and delete everything after
+
+#----------------
+
+# vim plugins: Git-fugitive
+:Gdiff              #Starts up the merge window
+:diffget //2        #From the merge window, gets the buffer from the target
+:diffget //3        #From the merge window, gets the buffer from the merge
+:diffupdate         #Updates the merge window
+
+# -------------Git----------------------
+HEAD    #refers to the current node you are in
+HEAD^   #goes back one node
+Git show    #Shows the last commit
+Git diff [FILENAME]     #tells you the difference between files
+Types of git resets:
+git reset --soft:   #The staged snapshot and working directory are not altered in any way.
+git reset --mixed:  #The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.
+git reset --hard    #The staged snapshot and the working directory are both updated to match the specified commit.
+git revert	#undoes changes by creating a new commit
+git reflog	#shows all commits, even deleted ones
+git rm --cached <filename>			#Removes a file from your staging area
+git stash   #Stashes the current working directory and reverts to HEAD
+git stash pop   #Retrieves the last stash and pops it. 
+git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
+git clean -ndfx     #Remove all untracked files and directories (remove n to do it for real)
+
+# -------------gdb----------------------
+gdb --tui [file]	#gdb has a tui mode; and in this mode. 
+C-s					#enters single key mode
+list				#Shows the current source code
+disable [breakpt]	#Disables the specified breakpoint by index
+
+
+
+# ----------Virtualbox------------------
+sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
+
+# --------Betterlockscreen--------------
+betterlockscreen -u [FILE]  #The default setting is enough for me
+betterlockscreen -l dimblur #To lock the screen
+
+##Regex
++				#One or more matches
+[^;, ]			#Ignore all of semicolon, comma, whitespace
+
+
+##ssh
+The SSH config file allows you to input several names "Host name" for your files
+ssh-agent       #A client that allows you to add ssh keys
+ssh-add         #The interface to add ssh keys
+
+##Makefiles
+make by default runs the first rule it finds. So, ideally you want make all to be the first rule (by tradition)
+.PHONY declares which rules don't actually make a file, and so the compiler won't check for whether clean is up to date or not, it'll just run the command no matter what
+
+## Ubuntu
+layout.css.devPixelsPerPx   #1.5 for laptop, 1 for normal
+GRUB_DEFAULT=saved;GRUB_SAVEDEFAULT=true    #/etc/default/grub changes to make it save last boot (see next line)
+sudo update-grub    #Updates grub
+sudo tlp start      #Updates TLP
+nmtui               #TUI interface for connecting to the internet
+nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to connect to the internet
+
+#i3 Hacks (that work but aren't pretty)
+sudo echo "export GDK_SCALE=2" >> /etc/default/i3_scale.sh; sudo systemctl restart    #For i3, Run this when running out on the laptop. It scales GDK_SCALE by 2, which means apps work better.
+
+
+#--------------Windows------------------
+# Where to find things
+The Windows Path is in C:\Users\Thomas\AppData\Local
+
+##Powershell
+Get-ChildItem . | Foreach-Object {
+    echo $_.Name 
+	echo $_.BaseName //Name without extension
+	echo $_.Extension //extension only
+}
+
+Get-ChildItem . | Foreach-Object {
+	$bn = $_.BaseName
+    ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
+}
+mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL) Note that link is the link itself, target is the place where the actual file lives

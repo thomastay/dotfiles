@@ -169,14 +169,19 @@ alias parkit="cd ~/caen/parkit-app; \
     ctags -R; \
     cd parkit;
 "
+
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
-alias tmux="tmux -2"
 export TERM=xterm-256color
-alias pip="pip3"
 export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/
 export MANPATH=/usr/local/texlive/2018/texmf-dist/doc/man/:$MANPATH
 export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH
+export DEBEMAIL="thomastayac@gmail.com"
+export DEBFULLNAME="Thomas Tay"
+
+#Aliases
+alias tmux="tmux -2"
+alias pip="pip3"
 alias v="vim"
 alias whatstheweather="~/.scripts/weather.sh"
 alias f="firefox &"

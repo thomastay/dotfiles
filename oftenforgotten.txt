@@ -16,6 +16,8 @@ zg							#Add a word to spellfile
 :set ff=unix #this command sets converts the CRLF endinds to LF endings for .gitconfig files
 vim -o[N]                Open N windows (default: one for each file)
 vim -O[N]                Like -o but split vertically
+:s/[PAT_1]/\r/g     #Replace all of PAT_1 with a newline
+:%normal f;D        #In every line, go to the first semicolon and delete everything after
 
 ##Git-fugitive
 :Gdiff              #Starts up the merge window
@@ -39,8 +41,8 @@ git reflog	#shows all commits, even deleted ones
 git rm --cached <filename>			#Removes a file from your staging area
 git stash   #Stashes the current working directory and reverts to HEAD
 git stash pop   #Retrieves the last stash and pops it. 
-
 git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
+git clean -ndfx     #Remove all untracked files and directories (remove n to do it for real)
 
 ##Virtualbox
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
@@ -125,7 +127,23 @@ layout.css.devPixelsPerPx   #1.5 for laptop, 1 for normal
 GRUB_DEFAULT=saved;GRUB_SAVEDEFAULT=true    #/etc/default/grub changes to make it save last boot (see next line)
 sudo update-grub    #Updates grub
 sudo tlp start      #Updates TLP
+nmtui               #TUI interface for connecting to the internet
+nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to connect to the internet
 
 ## Where things are
 /etc/default/tlp    #TLP config files
 /etc/default/grub   #Grub config files
+
+## Betterlockscreen
+betterlockscreen -u [FILE]  #The default setting is enough for me
+betterlockscreen -l dimblur #To lock the screen
+
+## Linux
+/var/log/apt/history.log    #Contains the data from apt installs
+
+## For fun
+sl
+apt moo
+telnet  towel.blinkenlights.nl
+traceroute -m 254 -q1 obiwan.scrye.net
+aptitude -v moo

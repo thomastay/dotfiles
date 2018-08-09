@@ -33,15 +33,14 @@ if [ "$connectionCount" -gt 1 ]; then
     ## Then we have a dual display, and so we go ahead
     if [ $monitor_mode = "EXTEND" ]; then
         monitor_mode="EXTERNAL"
-        xrandr --output $MON1 --mode $RES1 --output $MON2 --mode $RES2 --panning "$RES2+2560+0" --right-of $MON1
+        xrandr --output $MON1 --mode $RES1 --dpi 192 --output $MON2 --mode $RES2 --panning "$RES2+2560+0" --right-of $MON1
         #2560 is the width of $MON1
     elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"
-        xrandr --output $MON1 --off --output $MON2 --auto --primary --scale 1.75x1.75 --pos 0x0 --panning 3360x1890+0+0
-        #3360x1890 is the display 1920x1080 scaled by 1.75
+        xrandr --output $MON1 --off --output $MON2 --mode 1920x1080 --primary --pos 0x0 --dpi 120
     elif [ $monitor_mode = "INTERNAL" ]; then
         monitor_mode="CLONES"
-        xrandr --output $MON1 --primary --auto --output $MON2 --off
+        xrandr --output $MON1 --primary --dpi 192 --auto --output $MON2 --off
     else
         monitor_mode="EXTEND"
         xrandr --output $MON1 --mode $RES2 --output $MON2 --mode $RES2 --same-as $MON1
@@ -49,7 +48,7 @@ if [ "$connectionCount" -gt 1 ]; then
     echo "$monitor_mode" > /tmp/monitor_mode.dat
 else
     ## We only have one display, so just use the normal one
-    xrandr --output $MON1 --primary --mode $RES1 --auto
+    xrandr --output $MON1 --primary --mode $RES1 --auto --dpi 192
 fi
 
 ~/.fehbg

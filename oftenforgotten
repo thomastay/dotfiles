@@ -143,6 +143,14 @@ betterlockscreen -l dimblur #To lock the screen
 <C-a>n      #Switch to next pane
 <C-a>[0-9]      #Switch to numbered pane
 
+
+# ---------------Github----------------
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)    #Embed images in Github
+```     # Code block
+  # 2 spaces needed after blockquotes
+- [x]   #This is a complete item
+- [ ]   #This is an incomplete item
+
 ##Regex
 +				#One or more matches
 [^;, ]			#Ignore all of semicolon, comma, whitespace
@@ -167,6 +175,7 @@ nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to conne
 
 #i3 Hacks (that work but aren't pretty)
 sudo echo "export GDK_SCALE=2" >> /etc/default/i3_scale.sh; sudo systemctl restart    #For i3, Run this when running out on the laptop. It scales GDK_SCALE by 2, which means apps work better.
+$mod+Shift+Space        # Toggle floating mode
 
 
 #--------------Windows------------------

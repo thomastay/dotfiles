@@ -17,12 +17,13 @@ gaps outer 10
 
 # Executed stuff
 exec_always --no-startup-id ~/.scripts/remap
-#exec_always --no-startup-id ~/.config/polybar/launch.sh        #Now called by monitor.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh        #Now called by monitor.sh
 exec_always --no-startup-id xrandr --dpi 192
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id compton -CGb
 exec --no-startup-id wal -a 75 -i ~/Pictures/lily-banse-181917-unsplash.jpg
 exec --no-startup-id .scripts/fallbackToConnectedDisplay.sh
+exec --no-startup-id redshift       #For good eyes
 #exec --no-startup-id .scripts/monitor.sh
 exec --no-startup-id urxvt -e bash -c "/home/thomas/.scripts/weather.sh && bash"
 

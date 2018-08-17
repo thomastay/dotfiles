@@ -26,9 +26,17 @@ find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEn
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
 
+# -------------gdb----------------------
+gdb --tui [file]	#gdb has a tui mode; and in this mode. 
+C-s					#enters single key mode
+list				#Shows the current source code
+disable [breakpt]	#Disables the specified breakpoint by index
 
 # Graphics
 xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
+
+# Keyboard
+xev -event keyboard     #Show keys pressed on the keyboard
 
 # Devices & ISOs
 sudo mount /location/of/device /location/of/mount/point #Mount a device
@@ -44,7 +52,10 @@ sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
 
 # Misc Terminal
 ln -s [Place the link points to] [URL of link]	#Creates a Symbolic link in Ubuntu
-<c-z>		#Stops any running process (but does not kill!)
+<C-z>		#Stops any running process (but does not kill!)
+<C-l>       #Clear the page
+<C-a>       #Go to start of line
+<C-e>       #Go to end of line
 bg			#If there is a stopped procedure, run any stopped procedure in the background
 cut			#cut the lines vertically
 cut -d ')' -f 2		#Cut the lines that have a ) char, print the second one
@@ -56,7 +67,7 @@ command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a fil
 command &> out
 utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )" #Timing a program to stdout
 
-# For fun
+# For fun (6)
 sl
 apt moo
 telnet  towel.blinkenlights.nl
@@ -96,6 +107,14 @@ vim -O[N]                Like -o but split vertically
 :diffget //3        #From the merge window, gets the buffer from the merge
 :diffupdate         #Updates the merge window
 
+# vim plugins: ctags
+ctags -R *      #Create the ctags file
+<C-]>           #Jump to tag under cursor
+<C-W> <C-]>     #Open definition in horizontal split 
+<C-t>           #Go back up the stack
+:ts             #List all definitions of the last tag
+:tags           #All tags
+
 # -------------Git----------------------
 HEAD    #refers to the current node you are in
 HEAD^   #goes back one node
@@ -113,20 +132,16 @@ git stash pop   #Retrieves the last stash and pops it.
 git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
 git clean -ndfx     #Remove all untracked files and directories (remove n to do it for real)
 
-# -------------gdb----------------------
-gdb --tui [file]	#gdb has a tui mode; and in this mode. 
-C-s					#enters single key mode
-list				#Shows the current source code
-disable [breakpt]	#Disables the specified breakpoint by index
-
-
-
 # ----------Virtualbox------------------
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
 # --------Betterlockscreen--------------
 betterlockscreen -u [FILE]  #The default setting is enough for me
 betterlockscreen -l dimblur #To lock the screen
+
+# ----------------Tmux------------------
+<C-a>n      #Switch to next pane
+<C-a>[0-9]      #Switch to numbered pane
 
 ##Regex
 +				#One or more matches

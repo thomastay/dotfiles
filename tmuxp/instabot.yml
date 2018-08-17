@@ -1,0 +1,27 @@
+session_name: instabot
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - vim bot.py postfromDB.py
+          focus: true
+    - window_name: run
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - ctags -R *
+    - window_name: python
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - python
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - ranger

@@ -1,0 +1,24 @@
+session_name: redditdownload
+windows:
+    - window_name: vim 
+      focus: true
+      panes:
+        - shell_command:
+            - cd ~/RedditImageGrab
+            - source venv/bin/activate
+            - cd ~/RedditImageGrab/redditdownload
+            - vim redditdownload.py
+    - window_name: run
+      panes:
+        - shell_command:
+            - cd ~/RedditImageGrab
+            - source venv/bin/activate
+            - ctags -R *
+            - cd ~/RedditImageGrab/redditdownload
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/RedditImageGrab
+            - source venv/bin/activate
+            - cd ~/RedditImageGrab/redditdownload
+            - ranger

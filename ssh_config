@@ -2,10 +2,10 @@
 Host github.com
   HostName github.com
     User thomastayac
-	  IdentityFile ~/.ssh/id_rsa_personal
+	  IdentityFile ~/.ssh/id_rsa
 
 #Gitlab
 Host gitlab.eecs.umich.edu
 	HostName gitlab.eecs.umich.edu
 	User ttay
-	IdentityFile ~/.ssh/id_rsa_personal
+	IdentityFile ~/.ssh/id_rsa

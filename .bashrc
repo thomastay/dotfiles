@@ -170,6 +170,11 @@ alias parkit="cd ~/caen/parkit-app; \
     cd parkit;
 "
 
+alias instabot="cd ~/insta-instabot; \
+    source venv/bin/activate; \
+    ctags -R; \
+"
+
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
 export TERM=xterm-256color
@@ -188,4 +193,8 @@ alias f="firefox &"
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
 alias sv="sudoedit"
 alias vim-all='vim `find . -maxdepth 1 -type f`'
-alias ssa="ssh-add ~/.ssh/id_rsa_personal"
+alias ssa="ssh-add"
+alias apt="sudo apt"
+alias apt-get="sudo apt-get"
+alias df="df -h"
+alias du="du -sh"

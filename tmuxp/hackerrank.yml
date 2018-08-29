@@ -1,0 +1,12 @@
+session_name: instabot
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/hackerrank
+            - vim Makefile
+          focus: true
+    - window_name: run
+      panes:
+        - shell_command:
+            - cd ~/Documents/hackerrank

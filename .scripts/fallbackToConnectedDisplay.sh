@@ -10,7 +10,7 @@ while true; do
 	activeCount=$(echo $activeOutputs | wc -w)
 
 	if [ "$activeCount" -eq 0 ]; then
-		xrandr --auto
+		xrandr --auto --dpi 192
         ~/.config/polybar/launch.sh
         ~/.fehbg
 	fi

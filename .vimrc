@@ -69,6 +69,7 @@ nmap <leader>tt :edit
 "For YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_python_binary_path = 'python3'
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 "map <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set omnifunc=syntaxcomplete#Complete
 
@@ -145,7 +146,8 @@ set smartcase
 set hlsearch
 
 " Enable folding
-set foldmethod=indent
+set foldmethod=syntax
+autocmd Filetype python setlocal foldmethod=indent
 "set foldlevel=99
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
@@ -162,6 +164,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 iabbrev #a #include <algorithm>
 iabbrev #d #include <deque>
 iabbrev #i #include <iostream>
+iabbrev #s #include <string>
 iabbrev #l #include <limits>
 iabbrev #n #include <numeric>
 iabbrev #q #include <queue>
@@ -198,9 +201,9 @@ nmap S ciw
 nmap Y y$
 
 "Matchings
-inoremap ( ()<Esc>i
-inoremap " ""<Esc>i
-inoremap [ []<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap " ""<Esc>i
+"inoremap [ []<Esc>i
 "inoremap { {<CR><BS>}<Esc>ko
 
 command! W write

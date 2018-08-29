@@ -151,6 +151,11 @@ betterlockscreen -l dimblur #To lock the screen
 - [x]   #This is a complete item
 - [ ]   #This is an incomplete item
 
+# ---------------Ranger----------------
+<F7>    #Make new directory
+zh      #Show hidden files
+o       #Sort
+
 ##Regex
 +				#One or more matches
 [^;, ]			#Ignore all of semicolon, comma, whitespace

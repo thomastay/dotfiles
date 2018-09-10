@@ -45,6 +45,14 @@ lsusb       #Shows the output of the USB devices list
 sha256sum -c [SHA256SUM file] --ignore-missing # If the SHA256SUM file contains the name of your file
 sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
 
+# Bluetooth
+bluetoothctl  #Runs the CLI for bluetooth
+power on
+agent on
+scan on
+pair    [DEVICE MAC ADDRESS]
+connect [DEVICE MAC ADDRESS]
+
 # Where things are
 /etc/default/tlp    #TLP config files
 /etc/default/grub   #Grub config files
@@ -98,6 +106,8 @@ vim -o[N]                Open N windows (default: one for each file)
 vim -O[N]                Like -o but split vertically
 :s/[PAT_1]/\r/g     #Replace all of PAT_1 with a newline
 :%normal f;D        #In every line, go to the first semicolon and delete everything after
+@:      # Repeat the last command line change
+.       # Repeat the last action
 
 #----------------
 
@@ -155,6 +165,11 @@ betterlockscreen -l dimblur #To lock the screen
 <F7>    #Make new directory
 zh      #Show hidden files
 o       #Sort
+cw      #Rename file
+r       #Open with
+
+# -------------C++----------------------
+constructor: vector v(SIZE, DEFAULT);
 
 ##Regex
 +				#One or more matches

@@ -1,18 +1,26 @@
 session_name: instabot
 windows:
-    - window_name: vim 
+    - window_name: Website 
       panes:
         - shell_command:
             - cd ~/insta-bot
             - source venv/bin/activate
-            - vim bot.py postfromDB.py
+            - cd instaScheduler
+            - vim routes.py templates/home.html register.html
           focus: true
-    - window_name: run
+    - window_name: server
       panes:
         - shell_command:
             - cd ~/insta-bot
             - source venv/bin/activate
             - ctags -R *
+            - python run-instaScheduler.py
+    - window_name: Instabot
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - vim scheduler.py postbot.py likerbot.py
     - window_name: python
       panes:
         - shell_command:
@@ -25,3 +33,10 @@ windows:
             - cd ~/insta-bot
             - source venv/bin/activate
             - ranger
+    - window_name: firefox
+      panes:
+        - shell_command:
+            - cd ~/insta-bot
+            - source venv/bin/activate
+            - export GDK_SCALE=1
+            - firefox "localhost:5000" > /dev/null

@@ -107,12 +107,16 @@ let g:netrw_winsize=25
 nmap <leader>nv :Vex<CR>
 
 "Filetype indents
+"2 space indents
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+
+"4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2        "2 spaces is now the norm in JS and C++
 set expandtab
 
 "In general
@@ -147,13 +151,17 @@ set hlsearch
 
 " Enable folding
 set foldmethod=syntax
-autocmd Filetype python setlocal foldmethod=indent
+autocmd Filetype python,html setlocal foldmethod=indent
 "set foldlevel=99
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 "Mapping keys
-map <Leader>ll :silent !pdflatex -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR><CR>
+command! -nargs=1 Silent
+\   execute 'silent !' . <q-args>
+\ | execute 'redraw!'
+
+map <Leader>ll :Silent pdflatex -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
 map <Leader>run :!%:p
 
 " Edit this file
@@ -173,7 +181,7 @@ iabbrev #u #include <utility>
 iabbrev #m #include <unordered_map>
 iabbrev #v #include <vector>
 iabbrev iuns using namespace std;
-iabbrev imain int main(int argc, char **argv) {<cr> return 0;<cr>}
+iabbrev imain int main(int argc, char **argv) {<cr>return 0;<cr>}
 
 " Get off my lawn
 nnoremap <Left> <C-W>5<

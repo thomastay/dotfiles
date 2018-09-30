@@ -1,0 +1,25 @@
+session_name: eecs370p1
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p1
+            - vim simulate.c p1_spec.txt CMakeLists.txt
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p1/build
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p1
+            - ranger
+    - window_name: test
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p1/test
+    - window_name: ssh
+      panes:
+        - shell_command:
+            - ssh campuscaen

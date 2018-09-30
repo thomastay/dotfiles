@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

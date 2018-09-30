@@ -107,17 +107,19 @@ let g:netrw_winsize=25
 nmap <leader>nv :Vex<CR>
 
 "Filetype indents
+set tabstop=2
+set shiftwidth=2        "2 spaces is now the norm in JS and C++
+set expandtab
+
 "2 space indents
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
-set tabstop=2
-set shiftwidth=2        "2 spaces is now the norm in JS and C++
-set expandtab
+"8 space indents (Linux Kernel style)
+autocmd Filetype c setlocal ts=8 sw=8 expandtab
 
 "In general
 syntax enable
@@ -168,7 +170,7 @@ map <Leader>run :!%:p
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" C++ includes
+" C++ includes (Note: don't use #c!)
 iabbrev #a #include <algorithm>
 iabbrev #d #include <deque>
 iabbrev #i #include <iostream>
@@ -181,7 +183,10 @@ iabbrev #u #include <utility>
 iabbrev #m #include <unordered_map>
 iabbrev #v #include <vector>
 iabbrev iuns using namespace std;
-iabbrev imain int main(int argc, char **argv) {<cr>return 0;<cr>}
+iabbrev imain int main(int argc, char **argv)<cr>{<cr>return 0;<cr>}
+
+" C includes (Note: #cs doesn't work somehow)
+iabbrev #c #include <stdio.h><cr>#include <stdlib.h><cr>#include <assert.h>
 
 " Get off my lawn
 nnoremap <Left> <C-W>5<
@@ -222,7 +227,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 "Macros
 let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	
-let @e='i\begin{enumerate}[label = (\alph*)]\item\item\end{enumerate}^xkk$a'
+let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
 let @m='\left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix} \right)'
@@ -230,4 +235,5 @@ let @d='\frac{du}{dt}'
 
 "Pasting shortcuts
 let @s=' \text{ s.t. } '
+let @t='^*'
 let @i='^{-1}'

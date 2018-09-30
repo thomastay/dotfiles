@@ -9,3 +9,13 @@ Host gitlab.eecs.umich.edu
 	HostName gitlab.eecs.umich.edu
 	User ttay
 	IdentityFile ~/.ssh/id_rsa
+
+Host campuscaen
+	HostName oncampus-course.engin.umich.edu
+	User ttay
+	IdentityFile ~/.ssh/id_rsa
+
+Host caen
+	HostName login-course.engin.umich.edu
+	User ttay
+	IdentityFile ~/.ssh/id_rsa

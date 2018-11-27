@@ -192,6 +192,7 @@ sudo update-grub    #Updates grub
 sudo tlp start      #Updates TLP
 nmtui               #TUI interface for connecting to the internet
 nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to connect to the internet
+sudo dpkg -i /path/todebfile; sudo apt install -f;    #Install deb file
 
 #i3 Hacks (that work but aren't pretty)
 sudo echo "export GDK_SCALE=2" >> /etc/default/i3_scale.sh; sudo systemctl restart    #For i3, Run this when running out on the laptop. It scales GDK_SCALE by 2, which means apps work better.

@@ -1,0 +1,21 @@
+session_name: eecs370p3
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p3
+            - vim simulate.c CMakeLists.txt
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p3/build
+    - window_name: test
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p3/test
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs370/p3
+            - ranger

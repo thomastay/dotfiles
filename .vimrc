@@ -172,7 +172,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " C++ includes (Note: don't use #c!)
 iabbrev #a #include <algorithm>
-iabbrev #d #include <deque>
 iabbrev #i #include <iostream>
 iabbrev #s #include <string>
 iabbrev #l #include <limits>
@@ -182,6 +181,7 @@ iabbrev #r #include <random>
 iabbrev #u #include <utility>
 iabbrev #m #include <unordered_map>
 iabbrev #v #include <vector>
+iabbrev #d #include <bits/stdc++.h>
 iabbrev iuns using namespace std;
 iabbrev imain int main(int argc, char **argv)<cr>{<cr>return 0;<cr>}
 
@@ -201,6 +201,7 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-N> gT
 noremap <C-M> gt
+noremap <C-B> <C-U>
 
 "Remapping of Actual Keys
 "Note: Made a major change. Now, carriage return returns a newline

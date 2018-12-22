@@ -44,6 +44,7 @@ lsblk       #Shows the location of devices and their mount points
 lsusb       #Shows the output of the USB devices list
 sha256sum -c [SHA256SUM file] --ignore-missing # If the SHA256SUM file contains the name of your file
 sudo dd if=/path/to/file of=/dev/sda status=progress oflag=sync #Burn ISO to USB
+sudo mount /dev/sda1 /media/HDD       # Mount HDD
 
 # Bluetooth
 bluetoothctl  #Runs the CLI for bluetooth
@@ -52,6 +53,8 @@ agent on
 scan on
 pair    [DEVICE MAC ADDRESS]
 connect [DEVICE MAC ADDRESS]
+
+connect F4:4E:FD:E0:EF:56 #Bluetooth speaker
 
 # Where things are
 /etc/default/tlp    #TLP config files

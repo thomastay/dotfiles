@@ -227,7 +227,7 @@ command! Wq wq
 cmap w!! w !sudo tee > /dev/null %
 
 "Macros
-let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	
+let @b='o\begin{homeworkProblem}% Problem 0\end{homeworkProblem}jjkkA'
 let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'

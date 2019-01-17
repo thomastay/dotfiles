@@ -444,10 +444,10 @@ date-alt =  %Y-%m-%d
 
 time = "%H:%M"
 time-TZ = "America/Detroit"
-time-2-TZ = "Asia/Singapore"
-time-alt = "%H:%M:%S"
+"time-2-TZ = "Asia/Singapore"
+"time-alt = "%H:%M:%S"
 
-label = %date%   %time% | %date-2%   %time-2%
+label = %date%   %time%
 
 [module/date-SG]
 type = internal/date

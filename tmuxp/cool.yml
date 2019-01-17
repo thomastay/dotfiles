@@ -1,0 +1,21 @@
+session_name: cool
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/cool/assignments/PA1
+            - vim stack.cl
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/cool/assignments/PA1
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/cool/assignments/PA1
+            - ranger
+    - window_name: yml
+      panes:
+        - shell_command:
+            - vim ~/dotfiles/tmuxp/cool.yml

@@ -181,7 +181,7 @@ alias instabot="cd ~/insta-instabot; \
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
 export TERM=xterm-256color
-export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/
+export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/:/usr/class/bin
 export MANPATH=/usr/local/texlive/2018/texmf-dist/doc/man/:$MANPATH
 export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH
 export DEBEMAIL="thomastayac@gmail.com"

@@ -1,0 +1,25 @@
+session_name: eecs482p2
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p2
+            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p2.yml
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p2/build
+    - window_name: test
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p2/test
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p2
+            - ranger
+    - window_name: ssh
+      panes:
+        - shell_command:
+            - ssh campuscaen

@@ -7,4 +7,4 @@ killall -q polybar
 sleep 1
 
 # Launch bar1 and bar2
-polybar Main &
+polybar -q Main &

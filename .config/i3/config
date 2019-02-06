@@ -194,14 +194,17 @@ mode "resize" {
 
 # #---Extra XF86 Keys---# #
 # These are the extra media keys that some keyboards have.
-bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86AudioLowerVolume	exec --no-startup-id "sh -c 'pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%'
-bindsym XF86AudioRaiseVolume	exec --no-startup-id "sh -c 'pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%'"
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 1 toggle
+
+set $internalSpeakers alsa_output.pci-0000_00_1f.3.analog-stereo
+set $internalMic alsa_input.pci-0000_00_1f.3.analog-stereo
+bindsym XF86AudioMute		exec --no-startup-id pactl set-sink-mute $internalSpeakers toggle
+bindsym XF86AudioLowerVolume	exec --no-startup-id "sh -c 'pactl set-sink-mute $internalSpeakers false ; pactl set-sink-volume $internalSpeakers -5%'
+bindsym XF86AudioRaiseVolume	exec --no-startup-id "sh -c 'pactl set-sink-mute $internalSpeakers false ; pactl set-sink-volume $internalSpeakers +5%'"
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $internalMic toggle
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86Display exec ~/.scripts/monitor.sh
-bindsym Shift+XF86Display exec ~/.scripts/left.sh
+bindsym Shift+XF86Display exec ~/.scripts/oneScreen.sh
 bindsym XF86Explorer exec ranger
 #I don't use the mail key, so bind it to the monitor key
 bindsym XF86Mail exec ~/.scripts/monitor.sh

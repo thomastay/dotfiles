@@ -4,7 +4,7 @@ windows:
       panes:
         - shell_command:
             - cd ~/Documents/eecs482/p2
-            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p2.yml
+            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p2.yml *.cpp *.h
           focus: true
     - window_name: build
       panes:

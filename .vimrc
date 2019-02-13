@@ -117,6 +117,8 @@ autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
+"Temporarily for 482:
+autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
 
 "8 space indents (Linux Kernel style)
 autocmd Filetype c setlocal ts=8 sw=8 expandtab

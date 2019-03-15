@@ -34,6 +34,8 @@ disable [breakpt]	#Disables the specified breakpoint by index
 
 # Graphics
 xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
+xset dpms 0 0 1200      # sets the screen timeout to 1200 seconds (20 min)
+xset q                  # Shows the current xset settings
 
 # Keyboard
 xev -event keyboard     #Show keys pressed on the keyboard

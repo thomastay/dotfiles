@@ -133,7 +133,7 @@ BIRTHDAYS=(
     "Alice"
     "0403"
     "Mary"
-    "0703"
+    "0307"
     "Tony"
     "2307"
     "Natalie"

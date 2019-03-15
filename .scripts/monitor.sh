@@ -33,7 +33,7 @@ if [ "$connectionCount" -gt 1 ]; then
     ## Then we have a dual display, and so we go ahead
     if [ $monitor_mode = "EXTEND" ]; then
         monitor_mode="EXTERNAL"
-        xrandr --output $MON2 --mode $RES2 --pos 0x0 --rotate normal --output $MON1 --primary --di 192 --mode $RES1 --pos 1920x0 --rotate normal 
+        xrandr --output $MON2 --primary --mode $RES2 --pos 0x0 --rotate normal --output $MON1 --dpi 192 --mode $RES1 --pos 1920x0 --rotate normal 
         #2560 is the width of $MON1
     elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"

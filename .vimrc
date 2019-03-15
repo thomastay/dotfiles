@@ -118,7 +118,7 @@ autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
 "Temporarily for 482:
-autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
+"autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
 
 "8 space indents (Linux Kernel style)
 autocmd Filetype c setlocal ts=8 sw=8 expandtab
@@ -233,7 +233,7 @@ let @b='o\begin{homeworkProblem}% Problem 0\end{homeworkProblem}jjkkA'
 let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
-let @m='\left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix} \right)'
+let @m='\begin{bmatrix} a & b \end{bmatrix}'
 let @d='\frac{du}{dt}'
 
 "Pasting shortcuts

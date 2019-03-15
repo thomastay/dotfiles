@@ -1,0 +1,17 @@
+session_name: eecs388p2
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs388/p2
+            - vim *.txt
+          focus: true
+    - window_name: test
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs388/p2
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs388/p2
+            - ranger

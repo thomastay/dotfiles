@@ -1,0 +1,26 @@
+session_name: 482p3
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p3
+            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p3.yml *.cpp *.h
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p3/Debug
+    - window_name: test
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p3/test
+            - vim *.cpp
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs482/p3
+            - ranger
+    - window_name: ssh
+      panes:
+        - shell_command:
+            - ssh campuscaen

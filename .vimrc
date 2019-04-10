@@ -102,13 +102,14 @@ nmap <leader>ns :setlocal nospell<CR>
 " For Browser
 let g:netrw_liststyle=3
 let g:netrw_banner=0
-let g:netrw_browse_split=2
-let g:netrw_winsize=25
+let g:netrw_browse_split=4    " Open in previous buffer
+let g:netrw_winsize=15
+let g:netrw_altrv = 1
 nmap <leader>nv :Vex<CR>
 
 "Filetype indents
-set tabstop=2
-set shiftwidth=2        "2 spaces is now the norm in JS and C++
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "2 space indents
@@ -117,8 +118,8 @@ autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
-"Temporarily for 482:
-"autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
+" Google Style guide
+" autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
 
 "8 space indents (Linux Kernel style)
 autocmd Filetype c setlocal ts=8 sw=8 expandtab
@@ -138,6 +139,7 @@ set ff=unix
 set encoding=utf-8
 let python_highlight_all=1
 set tags=tags;/             "Look for tags upwards
+set mouse=a
 
 "Wrapping
 set wrap

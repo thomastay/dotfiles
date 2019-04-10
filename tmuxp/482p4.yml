@@ -1,28 +1,28 @@
-session_name: 482p3
+session_name: 482p4
 windows:
     - window_name: vim 
       panes:
         - shell_command:
-            - cd ~/Documents/eecs482/p3
-            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p3.yml *.cpp *.h
+            - cd ~/Documents/eecs482/p4
+            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p4.yml *.cpp *.h
           focus: true
     - window_name: build
       panes:
         - shell_command:
-            - cd ~/Documents/eecs482/p3/Debug
+            - cd ~/Documents/eecs482/p4/Debug
     - window_name: test
       panes:
         - shell_command:
-            - cd ~/Documents/eecs482/p3/
+            - cd ~/Documents/eecs482/p4/
     - window_name: vimtest
       panes:
         - shell_command:
-            - cd ~/Documents/eecs482/p3/test
+            - cd ~/Documents/eecs482/p4/test
             - vim *.cpp
     - window_name: ranger
       panes:
         - shell_command:
-            - cd ~/Documents/eecs482/p3
+            - cd ~/Documents/eecs482/p4
             - ranger
     - window_name: ssh
       panes:

@@ -51,11 +51,11 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 
-# Start Python (a calculator)
+# Start maxima (a calculator)
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 700 400
 for_window [instance="math"] move scratchpad
-exec --no-startup-id urxvt -name math -e python3 -q
+exec --no-startup-id urxvt -name math -e maxima -q
 
 bindsym $mod+c [instance="math"] scratchpad show; [instance="math"] move position center
 #Start ranger
@@ -158,6 +158,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# Swap containers
+bindsym $mod+Shift+s exec ~/.scripts/i3-display-swap.sh
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -204,7 +207,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $internalMic
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 bindsym XF86Display exec ~/.scripts/monitor.sh
-bindsym Shift+XF86Display exec ~/.scripts/oneScreen.sh
+bindsym Shift+XF86Display exec ~/.scripts/auto-screen.sh    # Does stuff based on one or two screens
 bindsym XF86Explorer exec ranger
 #I don't use the mail key, so bind it to the monitor key
 bindsym XF86Mail exec ~/.scripts/monitor.sh

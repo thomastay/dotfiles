@@ -1,5 +1,4 @@
 #!/bin/sh
-set +x
 #---- My personal preferences. Updates accordingly
 #---- If there is one screen,
 #---- Then display only one
@@ -15,4 +14,4 @@ elif [ $NUM_CONN -eq 2 ]; then
 fi
 
 ~/.fehbg
-~/.config/polybar/launch.sh &
+~/.config/polybar/launch.sh

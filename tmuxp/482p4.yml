@@ -4,7 +4,7 @@ windows:
       panes:
         - shell_command:
             - cd ~/Documents/eecs482/p4
-            - vim CMakeLists.txt Makefile ~/dotfiles/tmuxp/482p4.yml *.cpp *.h
+            - vim file_manager.cpp file_manager.h -O
           focus: true
     - window_name: build
       panes:
@@ -18,7 +18,6 @@ windows:
       panes:
         - shell_command:
             - cd ~/Documents/eecs482/p4/test
-            - vim *.cpp
     - window_name: ranger
       panes:
         - shell_command:

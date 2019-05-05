@@ -31,6 +31,12 @@ gdb --tui [file]	#gdb has a tui mode; and in this mode.
 C-s					#enters single key mode
 list				#Shows the current source code
 disable [breakpt]	#Disables the specified breakpoint by index
+x/32w               # Show memory at location for 32 words
+
+# -------------Assembly / Object files----------------------
+g++ -g -S -masm=intel -fverbose-asm [file].cpp -o [file].s  #generate readable assembly
+objdump -Mintel -x [file].o         # dump an object file (simple)
+objdump -C -Mintel -x [file].o         # dump an object file with demangling for C++
 
 # Graphics
 xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
@@ -206,10 +212,21 @@ $mod+Shift+Space        # Toggle floating mode
 ## Firefox
 http://detectportal.firefox.com/success.txt   #Login to wifi
 
+## Youtube-dl
+youtube-dl https://www.youtube.com/watch?v=0VtmmVQrNcY -o '%(title)s.%(ext)s' -x --audio-format mp3 -i 
+
+    # -x --audio-format mp3 // extracts the mp3 file out. requires ffmpee
+    # --postprocessor-args '-threads 3' //Use more threads
+    # --playlist-start 3 //starts the playlist at 3. 
+    # -i //ignore errors
+    # -o %%(playlist)s/%%(playlist_index)s - %%(title)s.%%(ext)s // syntax for playlists
+    # -o %%(title)s.%%(ext)s // syntax for normal files
+
 
 #--------------Windows------------------
 # Where to find things
 The Windows Path is in C:\Users\Thomas\AppData\Local
+
 
 ##Powershell
 Get-ChildItem . | Foreach-Object {

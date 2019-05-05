@@ -9,8 +9,10 @@ NUM_CONN=$(xrandr | grep -E "\bconnected" | wc -l)
 if [ $NUM_CONN -eq 1 ]; then
     # We have one display
     xrandr --auto
+    monitor_mode="SINGLE"
 elif [ $NUM_CONN -eq 2 ]; then
     xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output eDP-1 --mode 2560x1440 --pos 1920x0 --rotate normal --output DP-2 --off
+    monitor_mode="EXTEND"
 fi
 
 ~/.fehbg

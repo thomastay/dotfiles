@@ -144,11 +144,6 @@ tray-detached = false
 ; Tray icon max size
 tray-maxsize = 16
 
-; Enable pseudo transparency
-; Will automatically be enabled if a fully transparent
-; background color is defined using `tray-background`
-tray-transparent = true
-
 ; Background color for the tray container
 ; By default the tray container will use the bar
 ; background color.
@@ -363,7 +358,7 @@ tray-scale = 1.0
 ; Currently supported WM's:
 ;   bspwm
 ;   i3 (requires: `override-redirect = true`)
-wm-restack = i3
+; wm-restack = i3
 
 ; Enable support for inter-process messaging
 ; See the Messaging wiki page for more details.
@@ -440,12 +435,9 @@ type = internal/date
 interval = 1
 
 date =  %a, %b %d
-date-alt =  %Y-%m-%d 
 
 time = "%H:%M"
 time-TZ = "America/Detroit"
-"time-2-TZ = "Asia/Singapore"
-"time-alt = "%H:%M:%S"
 
 label = %date%   %time%
 
@@ -542,9 +534,18 @@ label-urgent-padding = 4
 
 [module/volume]
 type = internal/pulseaudio
-;speaker-mixer = Speaker
-;headphone-mixer = Headphone
-:headphone-id = 9
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
 
 format-volume = <ramp-volume> <label-volume>
 label-muted = 🔇 muted
@@ -639,7 +640,7 @@ interval = 2.0
 ping-interval = 10
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %local_ip%    %downspeed:8:8%    %upspeed:8:8%
+label-connected = %essid%    %downspeed:8:8%    %upspeed:8:8%
 label-disconnected =    not connected
 label-disconnected-foreground = #66
 

@@ -1,4 +1,4 @@
-session_name: instabot
+session_name: hackerrank
 windows:
     - window_name: vim 
       panes:

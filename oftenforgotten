@@ -93,6 +93,10 @@ telnet  towel.blinkenlights.nl
 traceroute -m 254 -q1 obiwan.scrye.net
 aptitude -v moo
 
+# Android with jmtpfs
+jmptfs ~/mnt    # mount device
+fusermount -u ~/mnt     #unmount device
+
 #------------------------------------APPLICATIONS-------------------------------
 
 #--------------Python------------------
@@ -119,8 +123,6 @@ vim -O[N]                Like -o but split vertically
 :%normal f;D        #In every line, go to the first semicolon and delete everything after
 @:      # Repeat the last command line change
 .       # Repeat the last action
-
-#----------------
 
 # vim plugins: Git-fugitive
 :Gdiff              #Starts up the merge window
@@ -186,7 +188,6 @@ constructor: vector v(SIZE, DEFAULT);
 +				#One or more matches
 [^;, ]			#Ignore all of semicolon, comma, whitespace
 
-
 ##ssh
 The SSH config file allows you to input several names "Host name" for your files
 ssh-agent       #A client that allows you to add ssh keys
@@ -204,6 +205,10 @@ sudo tlp start      #Updates TLP
 nmtui               #TUI interface for connecting to the internet
 nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to connect to the internet
 sudo dpkg -i /path/todebfile; sudo apt install -f;    #Install deb file
+
+## Timezone
+sudo dpkg-reconfigure tzdata    #interactive tool
+sudo timedatectl set-timezone <timezone>    #CLI tool
 
 #i3 Hacks (that work but aren't pretty)
 sudo echo "export GDK_SCALE=2" >> /etc/default/i3_scale.sh; sudo systemctl restart    #For i3, Run this when running out on the laptop. It scales GDK_SCALE by 2, which means apps work better.

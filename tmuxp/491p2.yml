@@ -1,0 +1,21 @@
+session_name: 491p2
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj2/
+            - export GOPATH=$(pwd)
+            - cd src/
+            - vim viewservice/*.go ~/dotfiles/tmuxp/491p2.yml
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj2
+            - export GOPATH=$(pwd)
+            - cd src/viewservice
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj2/src/viewservice
+            - ranger

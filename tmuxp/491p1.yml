@@ -1,0 +1,21 @@
+session_name: 491p1
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj1/
+            - export GOPATH=$(pwd)
+            - cd src/
+            - vim main/main.go mapreduce/*.go
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj1
+            - export GOPATH=$(pwd)
+            - cd src/main
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj1/src/mapreduce/output
+            - ranger

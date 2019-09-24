@@ -24,7 +24,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'majutsushi/tagbar'
-Plugin 'pangloss/vim-javascript'
+Plugin 'rust-lang/rust.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -216,6 +217,7 @@ nnoremap <CR> o<Esc>
 nnoremap 0 ^
 nnoremap ^ 0
 nnoremap <Space> za
+nnoremap <C-n> :nohl<CR>
 nmap S ciw
 nmap Y y$
 

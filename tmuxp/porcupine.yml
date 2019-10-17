@@ -1,0 +1,21 @@
+session_name: porcupine
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/porcupine
+            - export GOPATH=$(pwd)
+            - cd src/
+            - vim *.go
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/porcupine
+            - export GOPATH=$(pwd)
+            - cd src/
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/porcupine
+            - ranger

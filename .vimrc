@@ -25,6 +25,9 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'majutsushi/tagbar'
 Plugin 'rust-lang/rust.vim'
+Plugin 'zah/nim.vim'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -94,6 +97,19 @@ nnoremap <leader>tb :TagbarToggle<CR>
 "For Syntastic
 let g:syntastic_javascript_checkers=['eslint']
 
+" For nim
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
+
 """"""-----------END OF PLUGIN CONFIGS-------------------
 
 " For spellchecking
@@ -120,6 +136,7 @@ autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype nim setlocal ts=4 sw=4 expandtab
 " Google Style guide
 " autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 
@@ -238,7 +255,7 @@ let @b='o\begin{homeworkProblem}% Problem 0\end{homeworkProblem}jjkkA'
 let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
 let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
-let @m='\begin{bmatrix} a & b \end{bmatrix}'
+let @m='\begin{bmatrix} a & b & c \end{bmatrix}^T'
 let @d='\frac{du}{dt}'
 
 "Pasting shortcuts

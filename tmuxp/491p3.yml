@@ -1,0 +1,23 @@
+session_name: 491p3
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj3/
+            - export GOPATH=$(pwd)
+            - cd src/paxos
+            - vim *.go
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj3
+            - export GOPATH=$(pwd)
+            - cd src/paxos
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs491/proj3
+            - export GOPATH=$(pwd)
+            - cd src/paxos
+            - ranger

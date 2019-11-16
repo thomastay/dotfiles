@@ -26,6 +26,9 @@ find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEn
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
 
+# Image magick
+convert -sampling-factor 4:2:0 -strip -quality 30% [source.jpg] [result.jpg]
+
 # -------------gdb----------------------
 gdb --tui [file]	#gdb has a tui mode; and in this mode. 
 C-s					#enters single key mode
@@ -123,6 +126,8 @@ vim -O[N]                Like -o but split vertically
 :%normal f;D        #In every line, go to the first semicolon and delete everything after
 @:      # Repeat the last command line change
 .       # Repeat the last action
+
+set columns=120         # set window size for writing
 
 # vim plugins: Git-fugitive
 :Gdiff              #Starts up the merge window

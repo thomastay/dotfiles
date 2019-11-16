@@ -136,12 +136,15 @@ autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype nim setlocal ts=4 sw=4 expandtab
+autocmd Filetype nim setlocal ts=2 sw=2 expandtab
 " Google Style guide
 " autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 
 "8 space indents (Linux Kernel style)
 autocmd Filetype c setlocal ts=8 sw=8 expandtab
+
+" Gofmt uses tabs
+autocmd Filetype go setlocal ts=4 sw=4 sts=4 noet
 
 "In general
 syntax enable
@@ -176,7 +179,7 @@ set hlsearch
 
 " Enable folding
 set foldmethod=syntax
-autocmd Filetype python,html setlocal foldmethod=indent
+autocmd Filetype python,html,nim setlocal foldmethod=indent
 "set foldlevel=99
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview

@@ -1,0 +1,17 @@
+session_name: freud_writeup
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/freud_writeup/
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/freud_writeup
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/freud_writeup
+            - ranger

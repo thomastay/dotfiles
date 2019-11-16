@@ -170,6 +170,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+k exec keepass2
+bindsym $mod+Shift+b exec blueman-manager
 
 bindsym $mod+r mode "resize"
 # resize window (you can also use the mouse for that)

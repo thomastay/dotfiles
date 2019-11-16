@@ -5,7 +5,7 @@ windows:
         - shell_command:
             - cd ~/Documents/eecs491/proj3/
             - export GOPATH=$(pwd)
-            - cd src/paxos
+            - cd src/kvpaxos
             - vim *.go
           focus: true
     - window_name: build
@@ -13,11 +13,11 @@ windows:
         - shell_command:
             - cd ~/Documents/eecs491/proj3
             - export GOPATH=$(pwd)
-            - cd src/paxos
+            - cd src/kvpaxos
     - window_name: ranger
       panes:
         - shell_command:
             - cd ~/Documents/eecs491/proj3
             - export GOPATH=$(pwd)
-            - cd src/paxos
+            - cd src/kvpaxos
             - ranger

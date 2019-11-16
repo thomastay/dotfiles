@@ -1,0 +1,12 @@
+session_name: eecs498_final_proj
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs498/finalproj
+            - vim .
+          focus: true
+    - window_name: CAEN
+      panes:
+        - shell_command:
+          - ssh 498proj

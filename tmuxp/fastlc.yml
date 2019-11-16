@@ -1,0 +1,17 @@
+session_name: fastlc
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/fast_line_count/
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/fast_line_count
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/fast_line_count
+            - ranger

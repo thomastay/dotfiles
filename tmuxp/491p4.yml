@@ -1,21 +1,23 @@
-session_name: porcupine
+session_name: 491p4
 windows:
     - window_name: vim 
       panes:
         - shell_command:
-            - cd ~/Documents/porcupine
+            - cd ~/Documents/eecs491/proj4/
             - export GOPATH=$(pwd)
-            - cd src/porcupine
+            - cd src/
             - vim *.go
           focus: true
     - window_name: build
       panes:
         - shell_command:
-            - cd ~/Documents/porcupine
+            - cd ~/Documents/eecs491/proj4
             - export GOPATH=$(pwd)
-            - cd src/porcupine
+            - cd src/
     - window_name: ranger
       panes:
         - shell_command:
-            - cd ~/Documents/porcupine
+            - cd ~/Documents/eecs491/proj4
+            - export GOPATH=$(pwd)
+            - cd src/
             - ranger

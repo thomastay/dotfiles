@@ -1,0 +1,17 @@
+session_name: nim
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/nim_tutorial/
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/nim_tutorial
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/nim_tutorial
+            - ranger

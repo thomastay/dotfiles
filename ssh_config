@@ -19,3 +19,8 @@ Host caen
 	HostName login-course.engin.umich.edu
 	User ttay
 	IdentityFile ~/.ssh/id_rsa
+
+Host 498gpu
+    HostName mbit5.eecs.umich.edu
+    User eecs498team16
+

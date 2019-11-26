@@ -9,4 +9,4 @@ windows:
     - window_name: CAEN
       panes:
         - shell_command:
-          - ssh 498proj
+          - ssh 498gpu

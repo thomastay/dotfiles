@@ -232,6 +232,9 @@ youtube-dl https://www.youtube.com/watch?v=0VtmmVQrNcY -o '%(title)s.%(ext)s' -x
     # -o %%(playlist)s/%%(playlist_index)s - %%(title)s.%%(ext)s // syntax for playlists
     # -o %%(title)s.%%(ext)s // syntax for normal files
 
+## pdftk
+pdftk microsoft-job-offer-letter.pdf cat 3-11 output job-letter.pdf     # Crop pages from a PDF document
+
 
 #--------------Windows------------------
 # Where to find things

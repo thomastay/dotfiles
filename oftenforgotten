@@ -26,7 +26,7 @@ find -L . -type f -path "*/LATEST/*.cpp" -exec grep "vector *< *vector< *TableEn
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;]*\);/\2/"				#This \( \) creates a group, which you can then refer to later using \1 or \2. The ^ in the square brackets means to ignore any item in the group.
 find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>" {} \; | grep -v "&" | grep -v '=' | grep -v "::" | sed "s/\(vector.*vector.*TableEntry.*>\) *\([^;, ]*\);.*/\2/" | sed "s/^\s//" | sort | uniq -c | sort -rn | head
 
-# Image magick
+# Image magick compression
 convert -sampling-factor 4:2:0 -strip -quality 30% [source.jpg] [result.jpg]
 
 # -------------gdb----------------------

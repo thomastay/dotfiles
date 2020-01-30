@@ -75,7 +75,7 @@ bindsym $mod+Shift+d exec SUDO_ASKPASS=~/.scripts/dpass.sh sudo -A $(dmenu_path 
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Lock the screen
-bindsym $mod+Shift+l exec betterlockscreen -l dimblur
+bindsym $mod+Shift+l exec systemctl suspend
 
 # change focus
 bindsym $mod+h focus left

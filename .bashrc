@@ -181,7 +181,7 @@ alias instabot="cd ~/insta-instabot; \
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
 export TERM=xterm-256color
-export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/:/usr/class/bin:/usr/local/go/bin:/home/thomas/.nimble/bin
+export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/:/usr/class/bin:/usr/local/go/bin:/home/thomas/.nimble/bin:/home/thomas/Downloads/SageMath
 export GOPATH=$HOME/go
 export MANPATH=/usr/local/texlive/2018/texmf-dist/doc/man/:$MANPATH
 export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH

@@ -1,0 +1,12 @@
+session_name: eecs445hw
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs445/
+          focus: true
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs445
+            - ranger

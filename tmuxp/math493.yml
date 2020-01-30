@@ -11,3 +11,8 @@ windows:
         - shell_command:
             - cd ~/Documents/math493
             - ranger
+    - window_name: maxima
+      panes:
+        - shell_command:
+            - cd ~/Documents/math493
+            - maxima

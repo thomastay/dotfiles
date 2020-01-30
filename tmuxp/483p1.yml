@@ -1,0 +1,21 @@
+session_name: 483p1
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs483/p1/src
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs483/p1/src
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs483/p1/src
+            - ranger
+    - window_name: caen
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs483/p1/src

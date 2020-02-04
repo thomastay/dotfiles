@@ -29,6 +29,13 @@ find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>
 # Image magick compression
 convert -sampling-factor 4:2:0 -strip -quality 30% [source.jpg] [result.jpg]
 
+# stat
+stat -c '%y' <filename>   # Last modified time of a file
+
+# du
+du -h <filename>       # size of a particular file
+du -sh * | sort -hr     # size of all files in a directory
+
 # -------------gdb----------------------
 gdb --tui [file]	#gdb has a tui mode; and in this mode. 
 C-s					#enters single key mode
@@ -64,8 +71,11 @@ agent on
 scan on
 pair    [DEVICE MAC ADDRESS]
 connect [DEVICE MAC ADDRESS]
-
 connect F4:4E:FD:E0:EF:56 #Bluetooth speaker
+
+# Apt
+apt install --only-upgrade <package-name>
+
 
 # Where things are
 /etc/default/tlp    #TLP config files
@@ -210,6 +220,7 @@ sudo tlp start      #Updates TLP
 nmtui               #TUI interface for connecting to the internet
 nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to connect to the internet
 sudo dpkg -i /path/todebfile; sudo apt install -f;    #Install deb file
+journalctl -b       # Read boot log messages
 
 ## Timezone
 sudo dpkg-reconfigure tzdata    #interactive tool
@@ -234,6 +245,7 @@ youtube-dl https://www.youtube.com/watch?v=0VtmmVQrNcY -o '%(title)s.%(ext)s' -x
 
 ## pdftk
 pdftk microsoft-job-offer-letter.pdf cat 3-11 output job-letter.pdf     # Crop pages from a PDF document
+pdftk [first_file.pdf] [second_file.pdf] cat output [output.pdf]        # Merge any number of files
 
 
 #--------------Windows------------------

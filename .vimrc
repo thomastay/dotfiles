@@ -25,7 +25,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'majutsushi/tagbar'
 Plugin 'rust-lang/rust.vim'
-Plugin 'zah/nim.vim'
+" Plugin 'zah/nim.vim'
 
 
 

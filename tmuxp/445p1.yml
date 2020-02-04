@@ -1,0 +1,16 @@
+session_name: 445p1
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs445/p1
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs445/p1
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - ranger ~/Documents/eecs445/p1

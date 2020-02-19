@@ -136,6 +136,7 @@ vim -O[N]                Like -o but split vertically
 :%normal f;D        #In every line, go to the first semicolon and delete everything after
 @:      # Repeat the last command line change
 .       # Repeat the last action
+%       # On the command line, this refers to the current file
 
 set columns=120         # set window size for writing
 
@@ -144,6 +145,7 @@ set columns=120         # set window size for writing
 :diffget //2        #From the merge window, gets the buffer from the target
 :diffget //3        #From the merge window, gets the buffer from the merge
 :diffupdate         #Updates the merge window
+:Glog               # See the diff of the last commit
 
 # vim plugins: ctags
 ctags -R *      #Create the ctags file
@@ -158,6 +160,7 @@ HEAD    #refers to the current node you are in
 HEAD^   #goes back one node
 Git show    #Shows the last commit
 Git diff [FILENAME]     #tells you the difference between files
+git diff [FILENAME] [commit hash]     #tells you the difference between files
 Types of git resets:
 git reset --soft:   #The staged snapshot and working directory are not altered in any way.
 git reset --mixed:  #The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.

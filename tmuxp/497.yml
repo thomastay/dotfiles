@@ -1,0 +1,17 @@
+session_name: 497
+windows:
+    - window_name: vim 
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs497/proj
+            - vim .
+          focus: true
+    - window_name: build
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs497/proj
+    - window_name: ranger
+      panes:
+        - shell_command:
+            - cd ~/Documents/eecs497/proj
+            - ranger

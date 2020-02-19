@@ -25,7 +25,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'majutsushi/tagbar'
 Plugin 'rust-lang/rust.vim'
-" Plugin 'zah/nim.vim'
+Plugin 'zah/nim.vim'
+Plugin 'tpope/vim-unimpaired'
 
 
 
@@ -168,7 +169,14 @@ set wrap
 set wrapmargin=0
 set textwidth=80
 set linebreak
-set nolist  " list disables linebreak
+set list
+set lcs+=space:⋅
+set lcs+=trail:·
+set lcs+=tab:░\
+set lcs+=trail:·
+set lcs+=extends:»
+set lcs+=precedes:«
+set lcs+=nbsp:⣿
 autocmd Filetype tex,text,markdown setlocal textwidth=0
 
 "Case insensitive search for lowercase query, case sensitive for mixed case

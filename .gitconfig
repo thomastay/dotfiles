@@ -10,6 +10,7 @@
     st = status
     last = log -1 HEAD
     unstage = reset HEAD --
+    cip = "!f() { git commit -m \"$@\" && git push; }; f"
     lazy = "!f() { git commit -a -m \"$@\" && git push; }; f"
     lazyall = "!f() { git add . -A &&  git commit -m \"$@\" && git push; }; f"
     local = "!f() { git add . -A && git commit -a -m \"$@\"; }; f"

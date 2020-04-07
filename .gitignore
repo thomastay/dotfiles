@@ -1,3 +1,5 @@
 *.swp
 *.tmp
 *.out
+src/tmp.asm
+src/tmp.errors

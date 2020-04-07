@@ -169,7 +169,7 @@ set wrap
 set wrapmargin=0
 set textwidth=80
 set linebreak
-set list
+set nolist      " Turn it on manually when needed
 set lcs+=space:⋅
 set lcs+=trail:·
 set lcs+=tab:░\
@@ -268,8 +268,10 @@ let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
 let @m='\begin{bmatrix} a & b & c \end{bmatrix}^T'
 let @d='\frac{du}{dt}'
+let @p='o\begin{proof}\end{proof}jjO'
 
 "Pasting shortcuts
 let @s=' \text{ s.t. } '
 let @t='^*'
 let @i='^{-1}'
+

@@ -55,7 +55,7 @@ bindsym $mod+Return exec urxvt
 for_window [instance="math"] floating enable
 for_window [instance="math"] resize set 700 400
 for_window [instance="math"] move scratchpad
-exec --no-startup-id urxvt -name math -e maxima -q
+exec --no-startup-id urxvt -name math -e R -q
 
 bindsym $mod+c [instance="math"] scratchpad show; [instance="math"] move position center
 #Start ranger
@@ -75,7 +75,7 @@ bindsym $mod+Shift+d exec SUDO_ASKPASS=~/.scripts/dpass.sh sudo -A $(dmenu_path 
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Lock the screen
-bindsym $mod+Shift+l exec systemctl suspend
+bindsym $mod+Shift+l exec betterlockscreen -l dimblur
 
 # change focus
 bindsym $mod+h focus left

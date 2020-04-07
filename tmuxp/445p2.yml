@@ -1,16 +1,16 @@
-session_name: nim
+session_name: 445p2
 windows:
     - window_name: vim 
       panes:
         - shell_command:
-            - cd ~/Documents/nim_tutorial/
+            - cd ~/Documents/eecs445/p2
+            - vim .
           focus: true
     - window_name: build
       panes:
         - shell_command:
-            - cd ~/Documents/nim_tutorial
+            - cd ~/Documents/eecs445/p2
     - window_name: ranger
       panes:
         - shell_command:
-            - cd ~/Documents/nim_tutorial
-            - ranger
+            - ranger ~/Documents/eecs445/p2

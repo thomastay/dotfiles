@@ -14,6 +14,36 @@ grep -wl -E [regex] *.tex			#Grep for the specified expression in all tex files
 grep -iwl -E [regex] *.tex			#Grep for the specified expression in all tex files, case insensitive
 grep -i #grep case insensitive
 
+# Ripgrep
+-F  # raw string literal
+-S  # smart case search
+-l  # show filenames only
+--type cpp #Only C++ files
+
+
+# Pr
+pr -Tm [file1] [file2]      # Output both files in two columns
+
+# Paste
+paste file{1,2} | column -s $'\t' -tn     # output both files in two columns
+
+# Tar
+tar -xzvf       # Extract a file
+tar -tvf        # List the files in a tar.gz archive. z is optional.
+-x              # Extract
+-c              # Compress
+-z              # Gzip
+-j              # bzip2
+-v              # Visual, i.e. show your work
+-f              # File. Not strictly needed, but meh
+-t              # List files
+
+# Rsync
+# For full system backup
+rsync -aAXH --info=progress2 --exclude={".cache/*",".choosenim/*","node_modules/*","Downloads/SageMath","Downloads/ubuntu-18.04.1-desktop-amd64.iso",".ccache/*",".vim/*",".dotnet/*",".config/Code/*",".nuget/*","ionide/*",".rustup/*",".local/*",".dbus/*"} /home /media/HDD/linux_partition_backup/
+## Explanation: -aAX means archive mode
+## NO SPACES in between the commas!
+
 # Sort
 sort		#sorts any stdin that you want
 sort -u		#sorts without duplicates
@@ -28,6 +58,10 @@ find -L . -type f -path "*.txt" -exec grep "vector *< *vector< *TableEntry *> *>
 
 # Image magick compression
 convert -sampling-factor 4:2:0 -strip -quality 30% [source.jpg] [result.jpg]
+~/.scripts/shrink-jpg.sh [inputfile] # Implements the above
+
+# PDF
+~/.scripts/shrinkpdf.sh [inputfile] [outputfile]
 
 # stat
 stat -c '%y' <filename>   # Last modified time of a file
@@ -35,6 +69,7 @@ stat -c '%y' <filename>   # Last modified time of a file
 # du
 du -h <filename>       # size of a particular file
 du -sh * | sort -hr     # size of all files in a directory
+ncdu        # Ncurses based du
 
 # -------------gdb----------------------
 gdb --tui [file]	#gdb has a tui mode; and in this mode. 
@@ -47,6 +82,11 @@ x/32w               # Show memory at location for 32 words
 g++ -g -S -masm=intel -fverbose-asm [file].cpp -o [file].s  #generate readable assembly
 objdump -Mintel -x [file].o         # dump an object file (simple)
 objdump -C -Mintel -x [file].o         # dump an object file with demangling for C++
+
+# Find dependencies of a binary
+ldd <binary>    # To recursively find deps
+readelf -d <binary> | grep NEEDED # Read header
+strace -e -trace=open,openat <binary> # Run the program and log the dlopen syscalls
 
 # Graphics
 xrandr --output eDP-1 --auto --panning 2560x1440 --scale 1.25x1.25 #scaling issues in Linux
@@ -72,6 +112,8 @@ scan on
 pair    [DEVICE MAC ADDRESS]
 connect [DEVICE MAC ADDRESS]
 connect F4:4E:FD:E0:EF:56 #Bluetooth speaker
+ 74:5C:4B:5E:62:B3  # Jabra evolve 75
+
 
 # Apt
 apt install --only-upgrade <package-name>
@@ -183,6 +225,7 @@ betterlockscreen -l dimblur #To lock the screen
 # ----------------Tmux------------------
 <C-a>n      #Switch to next pane
 <C-a>[0-9]      #Switch to numbered pane
+<CR>~.      # Exit and kill SSH (ssh) session
 
 
 # ---------------Github----------------
@@ -198,6 +241,7 @@ zh      #Show hidden files
 o       #Sort
 cw      #Rename file
 r       #Open with
+uv      # Unmark all files
 
 # -------------C++----------------------
 constructor: vector v(SIZE, DEFAULT);
@@ -250,6 +294,8 @@ youtube-dl https://www.youtube.com/watch?v=0VtmmVQrNcY -o '%(title)s.%(ext)s' -x
 pdftk microsoft-job-offer-letter.pdf cat 3-11 output job-letter.pdf     # Crop pages from a PDF document
 pdftk [first_file.pdf] [second_file.pdf] cat output [output.pdf]        # Merge any number of files
 
+## Latex
+\setlength{\parindent}{0pt}     # no indents in paragraph
 
 #--------------Windows------------------
 # Where to find things

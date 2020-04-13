@@ -1,0 +1,10 @@
+--hint[Processing]:off
+--hint[SuccessX]:off
+--hint[Conf]:off
+--hint[CC]:off
+--hint[Link]:off
+--hint[GCStats]:off
+--hint[exec]:off
+--hint[Path]:off
+--verbosity:2
+--parallel_build: "0"

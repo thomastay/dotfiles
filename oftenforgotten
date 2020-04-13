@@ -208,7 +208,6 @@ vim -O[N]                Like -o but split vertically
 @:      # Repeat the last command line change
 .       # Repeat the last action
 %       # On the command line, this refers to the current file
-
 set columns=120         # set window size for writing
 
 # vim plugins: Git-fugitive
@@ -253,7 +252,7 @@ git clean -ndfx     #Remove all untracked files and directories (remove n to do 
 --since "5 days ago" # show changes since 5 days ago
 -S <string>     # show patches only related to function_name
 
-gitk    # graphical viewer
+gitk    # graphical viewer for git log history
 
 
 # ----------Virtualbox------------------

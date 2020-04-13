@@ -38,6 +38,33 @@ tar -tvf        # List the files in a tar.gz archive. z is optional.
 -f              # File. Not strictly needed, but meh
 -t              # List files
 
+# mpv keybindings
+LEFT      # Left arrow moves backwards 5 seconds.
+UP  # Up key moves back by 1 min
+[   # decrease playback speed by 10%
+{   # halve playback speed
+<Backspace>     # restore playback speed
+<Space>     # Pause
+q           # quit
+/ and *     # Decrease / increase volume
+9 and 0     # Decrease / increase volume
+m       # mute
+f       # full screen
+o       # Show progression bar
+j/J     # cycle through subtitles
+l       # adjust A-B loop points
+L       # toggle infinite loop
+r/R     # adjust subtitles positions
+s       # take a screenshot
+v       # Toggle subtitle
+<   # Go backwards in playlist
+.   # Step forward one frame
+F9      # show audio/sub streams
+i       # show info
+\#      # cycle through audio tracks
+
+
+
 # Rsync
 # For full system backup
 rsync -aAXH --info=progress2 --exclude={".cache/*",".choosenim/*","node_modules/*","Downloads/SageMath","Downloads/ubuntu-18.04.1-desktop-amd64.iso",".ccache/*",".vim/*",".dotnet/*",".config/Code/*",".nuget/*","ionide/*",".rustup/*",".local/*",".dbus/*"} /home /media/HDD/linux_partition_backup/
@@ -140,6 +167,8 @@ command > out 2>eror	#Redirects stdout to one file and stderr to another
 command >out 2>&1		#Redirects stderr to stdout and then redirect stdout to a file
 command &> out
 utime="$( TIMEFORMAT=%plR;time ./test a 1000 2>&1 1>/dev/null )" #Timing a program to stdout
+command > /dev/null 2>&1 &      # Run command in background, with no output
+
 
 # For fun (6)
 sl
@@ -215,6 +244,18 @@ git stash pop   #Retrieves the last stash and pops it.
 git merge <branch ahead> <branch to be merged into> #If one br is specified, it merges into the current working branch by default.
 git clean -ndfx     #Remove all untracked files and directories (remove n to do it for real)
 
+##  Git log
+-p      # Show all files
+-3      # Show all files changed, in last 3 commits
+--stat  # summarize changes
+--since # show changes sinec a date
+--since 2.weeks # show changes since two weeks ago
+--since "5 days ago" # show changes since 5 days ago
+-S <string>     # show patches only related to function_name
+
+gitk    # graphical viewer
+
+
 # ----------Virtualbox------------------
 sudo mount -t vboxsf -o uid=$UID,gid=$(id -g) share ~/host  #How to mount the shared folder
 
@@ -269,9 +310,11 @@ nmcli device wifi connect [SSID-NAME] password [WIRELESS-PASSWORD] #CLI to conne
 sudo dpkg -i /path/todebfile; sudo apt install -f;    #Install deb file
 journalctl -b       # Read boot log messages
 
-## Timezone
+## Timezone / timedatectl
 sudo dpkg-reconfigure tzdata    #interactive tool
 sudo timedatectl set-timezone <timezone>    #CLI tool
+sudo timedatectl set-ntp on     # set this to off and on to restart NTP
+sudo journalctl -f -eu systemd-timesyncd    # See timesyncd messages, including timeout
 
 #i3 Hacks (that work but aren't pretty)
 sudo echo "export GDK_SCALE=2" >> /etc/default/i3_scale.sh; sudo systemctl restart    #For i3, Run this when running out on the laptop. It scales GDK_SCALE by 2, which means apps work better.
@@ -296,6 +339,11 @@ pdftk [first_file.pdf] [second_file.pdf] cat output [output.pdf]        # Merge 
 
 ## Latex
 \setlength{\parindent}{0pt}     # no indents in paragraph
+
+# Panserver - view markdown in the browser
+## this opens a server in the current directory
+## Opened it on port 10190 to avoid clashes
+python3 ~/panserver/panserver.py -abp 10190 > /dev/null 2>&1 &
 
 #--------------Windows------------------
 # Where to find things

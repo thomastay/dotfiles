@@ -167,17 +167,6 @@ fi
 fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
 echo ""
 
-alias parkit="cd ~/caen/parkit-app; \
-    source venv/bin/activate; \
-    ctags -R; \
-    cd parkit;
-"
-
-alias instabot="cd ~/insta-instabot; \
-    source venv/bin/activate; \
-    ctags -R; \
-"
-
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
 export TERM=xterm-256color
@@ -187,6 +176,7 @@ export MANPATH=/usr/local/texlive/2018/texmf-dist/doc/man/:$MANPATH
 export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH
 export DEBEMAIL="thomastayac@gmail.com"
 export DEBFULLNAME="Thomas Tay"
+export RIPGREP_CONFIG_PATH=/home/thomas/dotfiles/.ripgreprc
 
 #Aliases
 alias tmux="tmux -2"
@@ -205,3 +195,5 @@ alias free="free -h"
 alias size="du -hd 1 --exclude './.*' | sort -hr"
 alias fosl='fossil'
 alias lua="lua5.3"
+alias nimc="nim c"
+alias nimrun="nim c -r"

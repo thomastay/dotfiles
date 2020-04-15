@@ -100,6 +100,22 @@ du -h <filename>       # size of a particular file
 du -sh * | sort -hr     # size of all files in a directory
 ncdu        # Ncurses based du
 
+# -------------Fish shell----------------------
+history     # Command history
+history search <stuff>     # Command history
+
+set     # set a variable. Possibilities are:
+-U      # Universal. Done only once. Don't put in config
+-x      # export this variable
+-l      # Local, to block scope
+-g      # Global scope
+<blank> # If nothing, variables are function scoped
+
+test    # tests the given expression
+-lt/ge  # <, >= operators
+-n      # tests if a string is nonzero
+
+
 # -------------gdb----------------------
 gdb --tui [file]	#gdb has a tui mode; and in this mode. 
 C-s					#enters single key mode

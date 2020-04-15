@@ -8,6 +8,7 @@ nethogs
 ## Via PPA
 dotnet
 vscode
+fish
 
 
 ## Via direct download (and thus manual update needed)

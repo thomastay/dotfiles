@@ -156,16 +156,17 @@ export GIT_EDITOR="vim"
 . ~/.bash-git-prompt/gitprompt.sh
 GIT_PROMPT_ONLY_IN_REPO=1
 
-h=$(date "+%H")
-if [ $h -lt 12 ]; then
-    echo "Top o' the morning to ya, $USER!"
-elif [ $h -lt 18 ]; then
-    echo "Afternoon, $USER!"
-else
-    echo "Evening, gentlemen"
-fi
-fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
-echo ""
+# Now, moved to fish prompt. Kept here for backwards compat
+# h=$(date "+%H")
+# if [ $h -lt 12 ]; then
+#     echo "Top o' the morning to ya, $USER!"
+# elif [ $h -lt 18 ]; then
+#     echo "Afternoon, $USER!"
+# else
+#     echo "Evening, gentlemen"
+# fi
+# fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+# echo ""
 
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
@@ -177,6 +178,8 @@ export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH
 export DEBEMAIL="thomastayac@gmail.com"
 export DEBFULLNAME="Thomas Tay"
 export RIPGREP_CONFIG_PATH=/home/thomas/dotfiles/.ripgreprc
+
+exec fish
 
 #Aliases
 alias tmux="tmux -2"

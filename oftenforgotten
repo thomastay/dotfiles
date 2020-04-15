@@ -20,6 +20,8 @@ grep -i #grep case insensitive
 -l  # show filenames only
 --type cpp #Only C++ files
 
+# Jobs
+kill `jobs -p`  # kill running jobs
 
 # Pr
 pr -Tm [file1] [file2]      # Output both files in two columns
@@ -342,7 +344,25 @@ pdftk [first_file.pdf] [second_file.pdf] cat output [output.pdf]        # Merge 
 # Panserver - view markdown in the browser
 ## this opens a server in the current directory
 ## Opened it on port 10190 to avoid clashes
-python3 ~/panserver/panserver.py -abp 10190 > /dev/null 2>&1 &
+python3 ~/panserver/panserver.py > /dev/null 2>&1 &
+
+
+# Changing DNS
+## It is probably most effective to edit it on the router
+Manual setup > Change DNS server # D-Link router
+nmtui > Edit > TT > IPv4 (Auto) > (add your dns here) && ignore-auto-dns # Linux
+Settings > Wifi > TT > Advanced > IP > Static > DNS 1/2 # Android
+
+# DNS servers
+8.8.8.8 - Google
+1.1.1.1 - Cloudflare
+208.67.222.222 - OpenDNS 1
+208.67.220.220 - OpenDNS 2
+
+# Querying the DNS server of a website
+dig +short [website]
+hosts [website]
+nslookup [website]
 
 #--------------Windows------------------
 # Where to find things

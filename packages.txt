@@ -1,0 +1,27 @@
+# This file lists packages I've installed on my Linux box
+
+## Via apt-get
+mpv
+sqlitebrowser
+nethogs
+
+## Via PPA
+dotnet
+vscode
+
+
+## Via direct download (and thus manual update needed)
+bash-git-prompt
+ripgrep
+lua5.3
+choosenim
+rustup
+golang
+zig
+sagemath
+panserver
+polybar
+tikzcd-editor
+pandoc
+
+

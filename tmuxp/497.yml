@@ -4,17 +4,17 @@ windows:
       panes:
         - shell_command:
             - cd ~/Documents/eecs497/proj
-            - source venv/bin/activate
+            - source venv/bin/activate.fish
             - vim smiles2/views/*.py
           focus: true
     - window_name: build
       panes:
         - shell_command:
             - cd ~/Documents/eecs497/proj
-            - source venv/bin/activate
+            - source venv/bin/activate.fish
     - window_name: ranger
       panes:
         - shell_command:
             - cd ~/Documents/eecs497/proj
-            - source venv/bin/activate
+            - source venv/bin/activate.fish
             - ranger

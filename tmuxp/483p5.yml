@@ -4,7 +4,7 @@ windows:
       panes:
         - shell_command:
             - cd ~/Documents/eecs483/p5/src
-            - vim mips.{cc,h} tac.{cc,h}
+            - vim codegen.{cc,h} tac.{cc,h}
           focus: true
     - window_name: build
       panes:

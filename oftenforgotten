@@ -7,6 +7,10 @@ find . -maxdepth 1 -type f  #Finds all files in the current directory but NOT su
 
 # Sed
 grep vs sed		#Cut which lines you want vs Cut out things from the line
+sed -E  # regexes
+-n # Do not print the input by default.
+/p # print only if a replacement was done.
+
 
 # Grep
 grep vs sed		#Cut which lines you want vs Cut out things from the line
@@ -41,6 +45,8 @@ tar -tvf        # List the files in a tar.gz archive. z is optional.
 -t              # List files
 
 # mpv keybindings
+j/J     # cycle through subtitles
+\#      # cycle through audio tracks
 LEFT      # Left arrow moves backwards 5 seconds.
 UP  # Up key moves back by 1 min
 [   # decrease playback speed by 10%
@@ -53,7 +59,6 @@ q           # quit
 m       # mute
 f       # full screen
 o       # Show progression bar
-j/J     # cycle through subtitles
 l       # adjust A-B loop points
 L       # toggle infinite loop
 r/R     # adjust subtitles positions
@@ -63,7 +68,11 @@ v       # Toggle subtitle
 .   # Step forward one frame
 F9      # show audio/sub streams
 i       # show info
-\#      # cycle through audio tracks
+
+mpv --audio-device=help     # Find all audio devices
+# In case cannot detect headphones, use this:
+mpv --audio-device='pulse/alsa_output.usb-0b0e_Jabra_Link_370_745C4BA6557C011200-00.analog-stereo' 'https://www.youtube.com/playlist?list=PLnif93tJftftkzehpooEI-WrldifzoNgB' --no-video
+mpv --audio-device='pulse/alsa_output.usb-0b0e_Jabra_Link_370_745C4BA6557C011200-00.analog-stereo' --ytdl-raw-options=write-sub=,write-auto-sub=,sub-lang=en <youtube-link>
 
 
 
@@ -198,6 +207,9 @@ aptitude -v moo
 # Android with jmtpfs
 jmptfs ~/mnt    # mount device
 fusermount -u ~/mnt     #unmount device
+
+# ncmpcpp
+u       # Reload database
 
 #------------------------------------APPLICATIONS-------------------------------
 

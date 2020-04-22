@@ -12,6 +12,8 @@ SETUVAR _fish_abbr_fosl:fossil
 SETUVAR _fish_abbr_free:free\x20\x2dh
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_lua:lua5\x2e3
+SETUVAR _fish_abbr_mpv_2D_ytdl:mpv\x20\x2d\x2daudio\x2ddevice\x3d\x27pulse/alsa_output\x2eusb\x2d0b0e_Jabra_Link_370_745C4BA6557C011200\x2d00\x2eanalog\x2dstereo\x27\x20\x2d\x2dytdl\x2draw\x2doptions\x3dwrite\x2dsub\x3d\x2cwrite\x2dauto\x2dsub\x3d\x2csub\x2dlang\x3den
+SETUVAR _fish_abbr_mpv_2D_ytdl_2D_bth:mpv\x20\x2d\x2daudio\x2ddevice\x3d\x27pulse/alsa_output\x2eusb\x2d0b0e_Jabra_Link_370_745C4BA6557C011200\x2d00\x2eanalog\x2dstereo\x27\x20\x2d\x2dytdl\x2draw\x2doptions\x3dwrite\x2dsub\x3d\x2cwrite\x2dauto\x2dsub\x3d\x2csub\x2dlang\x3den
 SETUVAR _fish_abbr_nimc:nim\x20c
 SETUVAR _fish_abbr_nimrun:nim\x20c\x20\x2dr
 SETUVAR _fish_abbr_pip:pip3
@@ -21,7 +23,7 @@ SETUVAR _fish_abbr_ssa:ssh\x2dadd
 SETUVAR _fish_abbr_sv:sudoedit
 SETUVAR _fish_abbr_tmux:tmux\x20\x2d2
 SETUVAR _fish_abbr_v:vim
-SETUVAR _fish_abbr_vim_2D_all:vim\x20\x60find\x20\x2e\x20\x2dmaxdepth\x201\x20\x2dtype\x20f\x60
+SETUVAR _fish_abbr_vim_2D_all:vim\x20\x28find\x20\x2e\x20\x2dmaxdepth\x201\x20\x2dtype\x20f\x29
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7

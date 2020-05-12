@@ -134,10 +134,10 @@ set expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
+autocmd Filetype nim setlocal ts=2 sw=2 expandtab
 
 "4 space indents
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype nim setlocal ts=2 sw=2 expandtab
+"autocmd Filetype python setlocal ts=4 sw=4 expandtab
 " Google Style guide
 " autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 

@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.S0gfVl/sagenb.fish @ line 1
+# Defined in /home/thomas/.config/fish/functions/sagenb.fish @ line 2
 function sagenb
-    sage --notebook=jupyter > (mktemp) &
+    sage --notebook=jupyter 2&>1 (mktemp) &
 end

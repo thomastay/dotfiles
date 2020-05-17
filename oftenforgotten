@@ -25,7 +25,7 @@ grep -i #grep case insensitive
 --type cpp #Only C++ files
 
 # Jobs
-kill `jobs -p`  # kill running jobs
+kill (jobs -p)  # kill running jobs
 
 # Pr
 pr -Tm [file1] [file2]      # Output both files in two columns

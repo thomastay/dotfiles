@@ -7,6 +7,7 @@ hint("GCStats", false)
 hint("exec", false)
 hint("Path", false)
 hint("GlobalVar", false)
+warning("GcUnsafe", false)
 --verbosity:2
 --parallel_build:0
 --listCmd:off

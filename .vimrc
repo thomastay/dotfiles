@@ -1,3 +1,6 @@
+if &shell =~# 'fish$'
+    set shell=/bin/bash
+endif
 "Leader key and my own key settings. This has to come before plugins
 let mapleader = ","
 
@@ -27,6 +30,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'rust-lang/rust.vim'
 Plugin 'zah/nim.vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'kmarius/vim-fish'
 
 
 
@@ -111,6 +115,13 @@ endf
 nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
 
+" For Fish
+"" Set up :make to use fish for syntax checking.
+autocmd Filetype fish compiler fish
+
+"" Enable folding of block structures in fish.
+autocmd Filetype fish setlocal foldmethod=expr
+
 """"""-----------END OF PLUGIN CONFIGS-------------------
 
 " For spellchecking
@@ -131,15 +142,15 @@ set shiftwidth=4
 set expandtab
 
 "2 space indents
-autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript,html,css setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
+autocmd Filetype nim setlocal ts=2 sw=2 expandtab
+" Google Style guide
+autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 
 "4 space indents
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype nim setlocal ts=2 sw=2 expandtab
-" Google Style guide
-" autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 
 "8 space indents (Linux Kernel style)
 autocmd Filetype c setlocal ts=8 sw=8 expandtab
@@ -263,8 +274,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 "Macros
 let @b='o\begin{homeworkProblem}% Problem 0\end{homeworkProblem}jjkkA'
-let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
-let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
+let @e='o\begin{enumerate}[(a)]\item\item\end{enumerate}kk$a'
+let @c='o\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
 let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
 let @m='\begin{bmatrix} a & b & c \end{bmatrix}^T'
 let @d='\frac{du}{dt}'

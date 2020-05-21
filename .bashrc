@@ -153,40 +153,22 @@ done
 
 export EDITOR="vim"
 export GIT_EDITOR="vim"
-. ~/.bash-git-prompt/gitprompt.sh
-GIT_PROMPT_ONLY_IN_REPO=1
-
-# Now, moved to fish prompt. Kept here for backwards compat
-# h=$(date "+%H")
-# if [ $h -lt 12 ]; then
-#     echo "Top o' the morning to ya, $USER!"
-# elif [ $h -lt 18 ]; then
-#     echo "Afternoon, $USER!"
-# else
-#     echo "Evening, gentlemen"
-# fi
-# fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
-# echo ""
+# . ~/.bash-git-prompt/gitprompt.sh
+# GIT_PROMPT_ONLY_IN_REPO=1
 
 #For tmux
 export TMUXP_CONFIGDIR=$HOME/dotfiles/tmuxp
 export TERM=xterm-256color
-export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/:/usr/class/bin:/usr/local/go/bin:/home/thomas/.nimble/bin:/home/thomas/Downloads/SageMath:/home/thomas/zig/
+# export PATH=$PATH:/home/thomas/.local/bin:/usr/local/texlive/2018/bin/x86_64-linux/:/usr/class/bin:/usr/local/go/bin:/home/thomas/.nimble/bin:/home/thomas/Downloads/SageMath:/home/thomas/zig/
 export GOPATH=$HOME/go
-export MANPATH=/usr/local/texlive/2018/texmf-dist/doc/man/:$MANPATH
-export INFOPATH=/usr/local/texlive/2018/texmf-dist/doc/info:$INFOPATH
-export DEBEMAIL="thomastayac@gmail.com"
-export DEBFULLNAME="Thomas Tay"
 export RIPGREP_CONFIG_PATH=/home/thomas/dotfiles/.ripgreprc
 
-exec fish
+# exec fish
 
 #Aliases
 alias tmux="tmux -2"
 alias pip="pip3"
 alias v="vim"
-alias whatstheweather="~/.scripts/weather.sh"
-alias f="firefox >/dev/null &"
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
 alias sv="sudoedit"
 alias vim-all='vim `find . -maxdepth 1 -type f`'

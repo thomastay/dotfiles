@@ -4,52 +4,32 @@ endif
 "Leader key and my own key settings. This has to come before plugins
 let mapleader = ","
 
-"For Vundle
-set nocompatible  
-filetype off 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('~/.vim/bundle')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'craigemery/vim-autotag'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'majutsushi/tagbar'
-Plugin 'rust-lang/rust.vim'
-Plugin 'zah/nim.vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'kmarius/vim-fish'
-
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" " To ignore plugin indent changes, instead use:
-" "filetype plugin on
-" "
-" " Brief help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
+" " Declare the list of plugins.
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'craigemery/vim-autotag'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'majutsushi/tagbar'
+Plug 'rust-lang/rust.vim'
+Plug 'zah/nim.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'kmarius/vim-fish'
+
+" " List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
 """"""-----------PLUGIN CONFIGS-------------------
 
 " For Airline
@@ -123,6 +103,9 @@ autocmd Filetype fish compiler fish
 autocmd Filetype fish setlocal foldmethod=expr
 
 """"""-----------END OF PLUGIN CONFIGS-------------------
+
+" Only for use in Windows terminal
+source $VIMRUNTIME/mswin.vim
 
 " For spellchecking
 nmap <leader>sc :setlocal spell spelllang=en_us<CR>

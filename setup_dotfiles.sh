@@ -4,11 +4,8 @@ do
     ln -bs ~/dotfiles/$F ~
 done
 
-rm ~/.vimrc-win
-rm ~/.git
-
 cd ~
-ln -s dotfiles/oftenforgotten.txt of
+ln -s dotfiles/oftenforgotten of
 
 cd ~/.ssh
 ln -sb config ../dotfiles/config

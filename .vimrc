@@ -15,7 +15,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'craigemery/vim-autotag'
+"Plug 'craigemery/vim-autotag'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 "Plug 'Valloric/YouCompleteMe'
@@ -183,8 +183,8 @@ set hlsearch
 set foldmethod=syntax
 autocmd Filetype python,html,nim setlocal foldmethod=indent
 "set foldlevel=99
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent loadview
 
 "Mapping keys
 command! -nargs=1 Silent

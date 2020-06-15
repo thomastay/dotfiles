@@ -24,30 +24,8 @@ end
 ## User functions - Aliases
 ## As below, functions are in ~/.config/fish/functions
 
-# function mkgo
-#   mkdir -p $argv;
-#   cd $argv
-# end
-
-# function rmb
-#     grep -iC 2 "$argv" ~/of
-# end
-
-# aliases (for sane defaults)
-# Aliases are in ~/.config/fish/functions
-# to save an alias, just do funcsave <alias-name>
-# This is to speed up shell boot time
-
-# alias tmux "tmux -2"
-# alias scrot 'scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
-# alias apt "sudo apt"
-# alias apt-get "sudo apt-get"
-# alias df "df -h"
-# alias free "free -h"
-
-
 # Abbreviations (for non defaults)
-abbr v vim
+abbr v nvim
 abbr g git
 abbr pip "pip3"
 abbr sv "sudoedit"

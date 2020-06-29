@@ -5,8 +5,8 @@ function replaceHome($pathArray) {
     # paths long.
     $splitChar = [System.IO.Path]::DirectorySeparatorChar
     if ( ($pathArray.Length -gt 2) -and
-        ([System.String]::Join($splitChar, $pathArray[0..2]) -eq $HOME)) {
-        @("~") + $pathArray[3..$pathArray.Length] # plus avoids issue of empty arr
+        (($pathArray[0..2] -join $splitChar) -eq $HOME)) {
+        @("~") + $pathArray[3..$pathArray.Length]
     }
     else {
         $pathArray
@@ -14,24 +14,26 @@ function replaceHome($pathArray) {
 }
 function fish_prompt {
     $splitChar = [System.IO.Path]::DirectorySeparatorChar
-    if ((Get-Location).ToString() -eq $HOME) {
+    $currLocation = (Get-Location)
+    if ($currLocation.ToString() -eq $HOME) {
         # Special case the home directory
         "~>"
     }
     else {
-        $current = Split-Path -Leaf -Path (Get-Location)
-        $parent = Split-Path -Parent -Path (Get-Location)
+        $current = Split-Path -Leaf -Path $currLocation
+        $parent = Split-Path -Parent -Path $currLocation
         $folders = $parent.Split($splitChar, [System.StringSplitOptions]::RemoveEmptyEntries)
         if ($folders.Length -lt 2) {
             # If the path is 0 or 1, then ignore.
-            (Get-Location).ToString() + ">"
+            $currLocation.ToString() + ">"
         }
         else {
             $folders = replaceHome($folders) # optional, to get the ~/Docs effect
             # Replace everything except the first name
+            # Note: On line 34, (+) for array concat avoids issue of empty arr
             $firstNameFolders = ForEach ($f in $folders[1..$folders.Length]) { $f[0] }
-            $folders = @($folders[0]) + $firstNameFolders # plus avoids issue of empty arr
-            [System.String]::Join($splitChar, $folders) + $splitChar + $current + ">"
+            $folders = @($folders[0]) + $firstNameFolders + @($current)
+            ($folders -join $splitChar) + ">"
         }
     }
 }
@@ -43,15 +45,26 @@ function prompt {
 Set-PSReadLineKeyHandler -Key "Ctrl+f" -Function ForwardWord
 Set-PSReadLineOption -Colors @{ Prediction = '#8b92fc' }
 
-function phineasferb ($start) {
-    mpv --playlist-start=$start 'https://www.youtube.com/playlist?list=PLt7zt2c5Rum0qukFJ73NWmFv-UdLDnYkJ'
-}
-
 function mkgo ($folderName) {
     mkdir $foldername
     Set-Location $foldername
 }
 
+function fortune {
+    $fortuneLocation = "C:\Users\z124t\source\repos\fortune\fortune.exe"
+    $noofFortunes = 3515 # update this accordingly
+    $randNum = (Get-Random -Max $noofFortunes)
+    & $fortuneLocation $randNum
+}
+
 ######## Aliases ###############
 Set-Alias -Name v -Value nvim-qt
 Set-Alias -Name ssa -Value ssh-agent
+
+######## Aliases as Functions ###############
+function nimc { nim c $args }
+function nimrun { nim c -r $args }
+
+# On Startup, do:
+# Clear-Host
+fortune

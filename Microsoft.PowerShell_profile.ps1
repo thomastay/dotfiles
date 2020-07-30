@@ -100,14 +100,53 @@ function Get-Youtube {
     https://github.com/ytdl-org/youtube-dl
 
     .EXAMPLE
-    PS> ./ytdl-wrapper -URL https://www.youtube.com/watch?v=yDOtENyOxyA -audio
+    PS> Get-Youtube -URL https://www.youtube.com/watch?v=yDOtENyOxyA -audio
 
     .EXAMPLE
-    PS> ./ytdl-wrapper https://www.youtube.com/playlist?list=PLD6GNPaln5zKG4XKdMCN5YrgkIivJnkYd -ignoreErrors
+    PS> Get-Youtube https://www.youtube.com/playlist?list=PLD6GNPaln5zKG4XKdMCN5YrgkIivJnkYd -ignoreErrors
 
     .EXAMPLE
-    PS> ./ytdl-wrapper -URL https://www.youtube.com/watch?v=yDOtENyOxyA -WhatIf
+    PS> Get-Youtube https://www.youtube.com/watch?v=yDOtENyOxyA -WhatIf
     #>
+}
+
+function promptYesNo ($title, $question) {
+    $choices = '&Yes', '&No'
+    $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+    $decision -eq 0
+}
+
+function Convert-GithubVersion($githubVersionString) {
+    [System.Version]$githubVersionString.Substring(1)
+}
+
+function Update-Keepass {
+    # Constants, change if needed
+    $keepassRPCLocation = "C:/Program Files (x86)/KeePass Password Safe 2/Plugins/"
+    $downloadFolder = "~/Downloads/"
+    $filename = "KeePassRPC.plgx"
+    $versionFileName = "keepassRPC-version.txt"
+    $keepassRPCGithubURL = "https://api.github.com/repos/kee-org/keepassrpc/releases"
+    # Access the Github API
+    $resp = Invoke-RestMethod -Uri $keepassRPCGithubURL
+    # Check for a version bump
+    $version = Convert-GithubVersion($resp[0].tag_name)
+    $oldVersion = Convert-GithubVersion (Get-Content ($downloadFolder + $versionFileName))
+    if ($version -le $oldVersion) {
+        Write-Host "Current version is $oldVersion, no need to update"
+        return
+    }
+    # Download the latest file to ~/Downloads
+    Write-Host "Updating $oldVersion --> $newVersion"
+    $url = $resp[0].assets.browser_download_url
+    Invoke-WebRequest -Uri $url -OutFile ($downloadFolder + $filename)
+    # Backup the files
+    if (promptYesNo("Keepass Closure Confirmation", "Have you closed KeePass?")) {
+        Move-Item -Path ($keepassRPCLocation + $filename) -Destination ($keepassRPCLocation + "KeePassRPC(1).plgx") -Force
+        Copy-Item -Path ($downloadFolder + $filename) -Destination $($keepassRPCLocation + $filename)
+        # Record the updated version to file
+        $version | Out-File ($downloadFolder + $versionFileName)
+    }
 }
 
 ######## Aliases ###############

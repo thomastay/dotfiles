@@ -67,6 +67,15 @@ function Update-KeepassRPC {
     Start-Process pwsh -ArgumentList "-NoProfile -file $scriptPath/Update-KeePassRPC.ps1" -Verb RunAs
 }
 
+function Get-GZipSize ($url) {
+    $headers = (Invoke-WebRequest -Method head -Headers @{"Accept-Encoding" = "gzip" } -URI $url | Select-Object -ExpandProperty headers)
+    $encoding = $headers['Content-Encoding'] 
+    if (-Not ($encoding -eq "gzip")) {
+        throw "$url did not return as gzip, instead returned $encoding"
+    }
+    $headers['Content-Length']
+}
+
 ######## Aliases ###############
 Set-Alias -Name v -Value nvim-qt
 Set-Alias -Name ssa -Value ssh-agent

@@ -409,3 +409,33 @@ Get-ChildItem . | Foreach-Object {
     ffmpeg -i $_.Name -vn -ab 192k "$bn.mp3"
 }
 mklink /H [Link] [Target]		#Symbolic Link - Windows command prompt (NOT POWERSHELL) Note that link is the link itself, target is the place where the actual file lives
+
+#---------------Clojure ----------------------
+## Java:
+if (b) {
+    return true;
+}
+(do-stuff here)
+return false;
+
+## Clojure:
+(or b (do-stuff here))
+
+## Java:
+if (!b1) {
+    return false;
+}
+if (!b2) {
+    return false;
+}
+(do-stuff here)
+return true;
+
+## Clojure:
+(and b1 b2
+  (do
+   (do-stuff here) 
+   true))
+
+
+

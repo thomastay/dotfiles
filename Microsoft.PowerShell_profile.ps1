@@ -68,10 +68,14 @@ function Update-KeepassRPC {
 }
 
 function Get-GZipSize ($url) {
+    $ErrorActionPreference = "Stop"
     $headers = (Invoke-WebRequest -Method head -Headers @{"Accept-Encoding" = "gzip" } -URI $url | Select-Object -ExpandProperty headers)
     $encoding = $headers['Content-Encoding'] 
     if (-Not ($encoding -eq "gzip")) {
-        throw "$url did not return as gzip, instead returned $encoding"
+        throw "The URL did not return as gzip, instead returned $encoding"
+    }
+    if (-Not ($headers.ContainsKey('Content-Length'))) {
+        throw "The URL has no Content-Length header. Oh well."
     }
     $headers['Content-Length']
 }

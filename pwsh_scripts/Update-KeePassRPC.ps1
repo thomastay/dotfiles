@@ -13,7 +13,7 @@ function Test-IsAdmin {
   try {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object Security.Principal.WindowsPrincipal -ArgumentList $identity
-    return $principal.IsInRole( [Security.Principal.WindowsBuiltInRole]::Administrator )
+    return $principal.IsInRole( [Security.Principal.WindowsBuiltInRole]::Administrator)
   }
   catch {
     throw "Failed to determine if the current user has elevated privileges. The error was: '{0}'." -f $_

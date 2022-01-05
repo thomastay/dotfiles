@@ -1,0 +1,222 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+
+"Leader key and my own key settings
+let mapleader = ","
+
+"For vim-plug
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'lifepillar/vim-solarized8'
+" All of your Plugins must be added before the following line
+call plug#end()            " required
+
+""""""-----------PLUGIN CONFIGS-------------------
+" For Airline
+let g:airline_theme='simple'
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" " Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+"For CtrlP
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+nmap <leader>p :CtrlP<cr>
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
+nmap <leader>tg :CtrlPTag<cr>
+
+"For Buffergator
+let g:buffergator_suppress_keymaps = 1
+" View the entire list of buffers open
+nmap <leader>bl :BuffergatorOpen<cr>
+nmap <leader>gt :BuffergatorMruCycleNext<cr>
+nmap <leader>gT :BuffergatorMruCyclePrev<cr>
+nmap <leader>tt :edit 
+
+" For fugitive (Git)
+nmap <leader>ga :Git add %:p<CR><CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit -v -q<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Git local 
+nmap <leader>gw :Gwrite<CR>
+nmap <leader>gr :Gread<CR>
+set diffopt+=vertical
+
+"For YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
+map <leader> gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+set omnifunc=syntaxcomplete#Complete
+
+"For Tagbar
+let g:tagbar_left = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+nnoremap <leader>tb :TagbarToggle<CR>
+
+" Color scheme (via plugin)
+colorscheme solarized8
+
+""""""-----------END OF PLUGIN CONFIGS-------------------
+
+" For spellchecking
+nmap <leader>sc :setlocal spell spelllang=en_us<CR>
+nmap <leader>ns :setlocal nospell<CR>
+
+" For Browser
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_browse_split=4    " Open in previous buffer
+let g:netrw_winsize=15
+let g:netrw_altrv = 1
+nmap <leader>nv :Vex<CR>
+
+"Filetype indents
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+"2 space indents
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
+autocmd Filetype nim setlocal ts=2 sw=2 expandtab
+
+"4 space indents
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
+" Google Style guide
+" autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
+
+"8 space indents (Linux Kernel style)
+autocmd Filetype c setlocal ts=8 sw=8 expandtab
+
+" Gofmt uses tabs
+autocmd Filetype go setlocal ts=4 sw=4 sts=4 noet
+
+"In general
+syntax enable
+set bg=dark
+set textwidth=80
+set autoindent
+set smartindent
+set number
+set cursorline
+set hidden				"For buffers
+set formatoptions-=cro
+set splitright
+set backspace=indent,eol,start
+set ff=dos
+set encoding=utf-8
+let python_highlight_all=1
+set tags=tags;/             "Look for tags upwards
+set clipboard=unnamed       "Use system clipboard
+set mouse=a     "Use the mouse
+
+"Wrapping
+set wrap
+set wrapmargin=0
+set textwidth=80
+set linebreak
+set nolist      " Turn it on manually when needed
+set lcs+=space:⋅
+set lcs+=trail:·
+set lcs+=tab:░\
+set lcs+=trail:·
+set lcs+=extends:»
+set lcs+=precedes:«
+set lcs+=nbsp:⣿
+autocmd Filetype tex,text,markdown setlocal textwidth=0
+
+"Case insensitive search for lowercase query, case sensitive for mixed case
+set incsearch       "Start searching with incomplete tag
+set ignorecase
+set smartcase
+set hlsearch
+
+" Enable folding
+set foldmethod=syntax
+autocmd Filetype python,html,nim setlocal foldmethod=indent
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent loadview
+
+" Edit this file
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" C++ includes
+iabbrev #a #include <algorithm>
+iabbrev #d #include <deque>
+iabbrev #c #include <cmath>
+iabbrev #i #include <iostream>
+iabbrev #l #include <limits>
+iabbrev #n #include <numeric>
+iabbrev #q #include <queue>
+iabbrev #r #include <random>
+iabbrev #u #include <utility>
+iabbrev #m #include <unordered_map>
+iabbrev #v #include <vector>
+iabbrev iuns using namespace std;
+iabbrev imain int main(int argc, char **argv) {<cr> return 0;<cr>}
+
+" Get off my lawn
+nnoremap <Left> <C-W>5<
+nnoremap <Right> <C-W>5>
+nnoremap <Up> <C-W>3-
+nnoremap <Down> <C-W>3+
+
+" Movement
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-N> gT
+noremap <C-M> gt
+
+"Mapping keys
+command! -nargs=1 Silent
+\   execute 'silent !' . <q-args>
+\ | execute 'redraw!'
+
+map <Leader>ll :Silent pdflatex -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
+map <Leader>run :!%:p
+
+"Remapping of Actual Keys
+"Remapping of Actual Keys
+"Note: Made a major change. Now, carriage return returns a newline
+imap jj <Esc>
+inoremap <S-Tab> <C-d>
+nnoremap <CR> o<Esc>
+nnoremap 0 ^
+nnoremap ^ 0
+nnoremap <Space> za
+nnoremap <C-n> :nohl<CR>
+nmap S ciw
+nmap Y y$
+
+command! W write
+command! Q quit
+command! WQ wq
+command! Wq wq
+
+"Macros
+let @b='i\begin{homeworkProblem}\end{homeworkProblem}jjkkA	'	
+let @e='i\begin{enumerate}[(a)]\item\item\end{enumerate}^xkk$a'
+let @c='i\[f(x) = \begin{cases}0 &\text{ if } x \leq 0\\x &\text{ if } x > 0\end{cases}\]'
+let @a='o\begin{align*}a &= b\\\end{align*}jjkk0'
+let @m='\left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix} \right)'
+let @d='\frac{du}{dt}'
+let @p='o\begin{proof}\end{proof}jjO'
+
+
+"Pasting shortcuts
+let @s=' \text{ s.t. } '
+let @i='^{-1}'

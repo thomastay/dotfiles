@@ -1,0 +1,2 @@
+- Update JAVA_HOME, JAVA_CMD
+- Update Path to be ~/jdks/<your-java-verison>/bin

@@ -125,6 +125,9 @@ set completeopt=menuone,noinsert,noselect
 " Enable completions as you type
 let g:completion_enable_auto_popup = 1
 
+" For Python executable
+let g:python3_host_prog = 'C:/Users/z124t/AppData/Local/Microsoft/WindowsApps/python3.exe'
+
 
 " Jump to tag
 nn <M-g> :call JumpToDef()<cr>
@@ -195,12 +198,12 @@ set clipboard+=unnamedplus
 let g:clipboard = {
       \   'name': 'windowsclipboard',
       \   'copy': {
-      \      '+': ['win32yank', 'load-buffer', '-'],
-      \      '*': ['win32yank', 'load-buffer', '-'],
+      \      '+': ['win32yank', '-i', '--crlf'],
+      \      '*': ['win32yank', '-i', '--crlf'],
       \    },
       \   'paste': {
-      \      '+': ['win32yank', 'save-buffer', '-'],
-      \      '*': ['win32yank', 'save-buffer', '-'],
+      \      '+': ['win32yank', '-o', '--crlf'],
+      \      '*': ['win32yank', '-o', '--crlf'],
       \   },
       \   'cache_enabled': 1,
       \ }

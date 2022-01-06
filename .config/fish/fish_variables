@@ -10,6 +10,7 @@ SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_apt:sudo\x20apt
 SETUVAR _fish_abbr_apt_2D_get:sudo\x20apt\x2dget
 SETUVAR _fish_abbr_df:df\x20\x2dh
+SETUVAR _fish_abbr_emsdksetup:python3\x20\x7e/external/emsdk/emsdk\x2epy\x20configure_env\x20\x26\x3e\x20/dev/null
 SETUVAR _fish_abbr_find_2D_all:find\x20\x2e\x20\x2dname
 SETUVAR _fish_abbr_find_2D_here:find\x20\x2e\x20\x2dmaxdepth\x201\x20\x2dname
 SETUVAR _fish_abbr_fosl:fossil
@@ -28,6 +29,10 @@ SETUVAR _fish_abbr_sv:sudoedit
 SETUVAR _fish_abbr_tmux:tmux\x20\x2d2
 SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_vim_2D_all:vim\x20\x28find\x20\x2e\x20\x2dmaxdepth\x201\x20\x2dtype\x20f\x29
+SETUVAR _fisher_danhper_2F_fish_2D_ssh_2D_agent_files:/home/thomas/\x2econfig/fish/functions/__ssh_agent_is_started\x2efish\x1e/home/thomas/\x2econfig/fish/functions/__ssh_agent_start\x2efish\x1e/home/thomas/\x2econfig/fish/conf\x2ed/fish\x2dssh\x2dagent\x2efish
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/thomas/\x2econfig/fish/functions/fisher\x2efish\x1e/home/thomas/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:/home/thomas/\x2econfig/fish/functions/nvm\x2efish\x1e/home/thomas/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e/home/thomas/\x2econfig/fish/functions/_nvm_list\x2efish\x1e/home/thomas/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e/home/thomas/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e/home/thomas/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e/home/thomas/\x2econfig/fish/completions/nvm\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1edanhper/fish\x2dssh\x2dagent\x1ejorgebucaran/nvm\x2efish
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
@@ -57,4 +62,8 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/thomas/\x2ecargo/bin\x1e/home/thomas/JDK_FOLDER/bin/\x1e/usr/local/go/bin\x1e/home/thomas/go/bin/
+SETUVAR fish_user_paths:/home/thomas/bin\x1e/home/thomas/\x2ecargo/bin\x1e/home/thomas/JDK_FOLDER/bin/\x1e/usr/local/go/bin\x1e/home/thomas/go/bin/\x1e/home/thomas/external/zls/zig\x2dout/bin/
+SETUVAR latest:lts
+SETUVAR nvm_data:/home/thomas/\x2elocal/share/nvm
+SETUVAR nvm_default_version:lts
+SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist

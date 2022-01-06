@@ -5,6 +5,7 @@
 
 set -g fish_key_bindings fish_vi_key_bindings
 
+
 # Functions
 
 ## Fish-specific functions
@@ -41,3 +42,5 @@ abbr nimrun "nim c -r"
 abbr mpv-ytdl-bth "mpv --audio-device='pulse/alsa_output.usb-0b0e_Jabra_Link_370_745C4BA6557C011200-00.analog-stereo' --ytdl-raw-options=write-sub=,write-auto-sub=,sub-lang=en"
 abbr mpv-ytdl "mpv --audio-device='pulse/alsa_output.usb-0b0e_Jabra_Link_370_745C4BA6557C011200-00.analog-stereo' --ytdl-raw-options=write-sub=,write-auto-sub=,sub-lang=en"
 
+### setup emdsk
+abbr emsdksetup "python3 ~/external/emsdk/emsdk.py configure_env &> /dev/null"

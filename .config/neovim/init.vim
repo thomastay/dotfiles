@@ -203,12 +203,12 @@ set clipboard+=unnamedplus
 let g:clipboard = {
       \   'name': 'windowsclipboard',
       \   'copy': {
-      \      '+': ['win32yank', 'load-buffer', '-'],
-      \      '*': ['win32yank', 'load-buffer', '-'],
+      \      '+': ['win32yank', '-i', '--crlf'],
+      \      '*': ['win32yank', '-i', '--crlf'],
       \    },
       \   'paste': {
-      \      '+': ['win32yank', 'save-buffer', '-'],
-      \      '*': ['win32yank', 'save-buffer', '-'],
+      \      '+': ['win32yank', '-o', '--lf'],
+      \      '*': ['win32yank', '-o', '--lf'],
       \   },
       \   'cache_enabled': 1,
       \ }

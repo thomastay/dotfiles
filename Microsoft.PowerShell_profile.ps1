@@ -81,7 +81,7 @@ function Get-GZipSize ($url) {
 }
 
 ######## Aliases ###############
-Set-Alias -Name v -Value nvim-qt
+Set-Alias -Name v -Value nvim
 Set-Alias -Name ssa -Value ssh-agent
 
 ######## Aliases as Functions ###############

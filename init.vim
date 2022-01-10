@@ -5,60 +5,124 @@ let &packpath = &runtimepath
 let mapleader = ","
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 "
 " " Declare the list of plugins.
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'feline-nvim/feline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'akinsho/bufferline.nvim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'folke/which-key.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim'
+Plug 'nvim-telescope/telescope-live-grep-raw.nvim'
 Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-unimpaired'
 Plug 'neovim/nvim-lspconfig'
+Plug 'b3nj5m1n/kommentary'
+Plug 'ziglang/zig.vim'
+Plug 'rakr/vim-one'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Auto Completion engine
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " Snippets
 
 " " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 """"""-----------PLUGIN CONFIGS-------------------
-
-" For Airline
-let g:airline_theme='luna'
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" For feline (airline replacement) and other lua based syntax highlighting
+" For all lua based extensions
+" feline (airline replacement)
 set termguicolors
-lua << ENDFELINE
+lua << ENDLUA
 require('nvim-web-devicons').setup({
     default=true
 })
-require('gitsigns').setup()
+require('gitsigns').setup {
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 1000,
+    ignore_whitespace = false,
+  },
+}
 require('feline').setup()
 require('bufferline').setup()
-ENDFELINE
+require('telescope').setup {
+  defaults = {
+    path_display = {
+      truncate = 5,
+    },
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    },
+  },
+}
+require('telescope').load_extension('fzf')
+require('which-key').setup()
+require('which-key').register {
+    ["<leader>ut"] = "Convert word to UTC Date",
 
-"For CtrlP
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-nmap <leader>p :CtrlP<cr>
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-nmap <leader>tg :CtrlPTag<cr>
+    -- For telescope (Ctrl P replacement)
+    -- Find files using Telescope command-line sugar.
+    ["<C-p>"]      = { require("telescope.builtin").find_files, "Find File" },
+    ["<leader>rg"] = { require("telescope").extensions.live_grep_raw.live_grep_raw, "Search in files" },
+    ["<leader>rs"] = { require("telescope.builtin").grep_string, "Search for string under cursor" },
+}
+
+--- =============================================
+---
+---         Language Server Protocols
+---
+--- =============================================
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', ',td', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  -- buf_set_keymap('n', ',ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- buf_set_keymap('n', ',te', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  -- buf_set_keymap('n', ',fa', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+local servers = { 'zls' }
+local lspConfig = require('lspconfig')
+local coq = require "coq"
+for _, lsp in ipairs(servers) do
+    lspConfig[lsp].setup(coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
+    }))
+end
+ENDLUA
 
 "For Buffergator
-let g:buffergator_suppress_keymaps = 1
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
-nmap <leader>gt :BuffergatorMruCycleNext<cr>
-nmap <leader>gT :BuffergatorMruCyclePrev<cr>
-nmap <leader>tt :edit 
 
 " For fugitive (Git)
 nmap <leader>ga :Git add %:p<CR><CR>
@@ -68,70 +132,8 @@ nmap <leader>gd :Git diff<CR>
 nmap <leader>gp :Git push<CR>
 set diffopt+=vertical
 
-" For nim
-fun! JumpToDef()
-  if exists("*GotoDefinition_" . &filetype)
-    call GotoDefinition_{&filetype}()
-  else
-    exe "norm! \<C-]>"
-  endif
-endf
-
-" For zig and other Neovim LSPs
-:lua << EOF
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
--- local on_attach = function(client, bufnr)
---   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
---   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
--- 
---   -- Enable completion triggered by <c-x><c-o>
---   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
--- 
---   -- Mappings.
---   local opts = { noremap=true, silent=true }
--- 
---   -- See `:help vim.lsp.*` for documentation on any of the below functions
---   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
---   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
---   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
---   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
---   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
---   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
---   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
---   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
---   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
---   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
---   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
--- 
--- end
--- 
--- local servers = { 'zls' }
--- for _, lsp in ipairs(servers) do
---     require('lspconfig').zls.setup {
---         on_attach = on_attach
---     }
--- end
-EOF
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-" Enable completions as you type
-let g:completion_enable_auto_popup = 1
-
 " For Python executable
-let g:python3_host_prog = 'C:/Users/z124t/AppData/Local/Microsoft/WindowsApps/python3.exe'
-
-
-" Jump to tag
-nn <M-g> :call JumpToDef()<cr>
-ino <M-g> <esc>:call JumpToDef()<cr>i
+let g:python3_host_prog = 'C:/Program Files/WindowsApps/PythonSoftwareFoundation.Python.3.8_3.8.2800.0_x64__qbz5n2kfra8p0/python3.8.exe'
 
 " For Fish
 "" Set up :make to use fish for syntax checking.
@@ -176,9 +178,12 @@ autocmd Filetype c setlocal ts=8 sw=8 expandtab
 " Gofmt uses tabs
 autocmd Filetype go setlocal ts=4 sw=4 sts=4 noet
 
+" Color scheme
+colorscheme one
+set bg=dark
+
 "In general
 syntax enable
-set bg=dark
 set autoindent
 set smartindent
 set number
@@ -202,11 +207,14 @@ let g:clipboard = {
       \      '*': ['win32yank', '-i', '--crlf'],
       \    },
       \   'paste': {
-      \      '+': ['win32yank', '-o', '--crlf'],
-      \      '*': ['win32yank', '-o', '--crlf'],
+      \      '+': ['win32yank', '-o', '--lf'],
+      \      '*': ['win32yank', '-o', '--lf'],
       \   },
       \   'cache_enabled': 1,
       \ }
+
+" For nvim-qt
+set guifont=FiraCode\ NF
 
 "Wrapping
 set wrap
@@ -232,17 +240,19 @@ set hlsearch
 " Enable folding
 set foldmethod=syntax
 autocmd Filetype python,html,nim setlocal foldmethod=indent
-"set foldlevel=99
-"autocmd BufWinLeave *.* mkview
-"autocmd BufWinEnter *.* silent loadview
+set foldlevel=99
 
-"Mapping keys
-command! -nargs=1 Silent
-\   execute 'silent !' . <q-args>
-\ | execute 'redraw!'
+"JSON handling
+nnoremap <leader>jf :%!jq<cr><bar>:set ft=json<cr>
 
-map <Leader>ll :Silent pdflatex -synctex=1 -interaction=nonstopmode -output-directory %:p:h %:p<CR>
-map <Leader>run :!%:p
+" Parse unix time stamps
+" TODO possibly turn to lua
+function! ParseMillisTimeStamp(timestamp)
+    let tstamp = a:timestamp[:9]
+    return strftime("%c", tstamp)
+endfunction
+
+nnoremap <leader>ut ciw<C-r>=ParseMillisTimeStamp(<C-r>")<cr><Esc>
 
 " Edit this file
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -259,9 +269,7 @@ noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
-noremap <C-N> gT
-noremap <C-M> gt
-noremap <C-B> <C-U>
+" noremap <C-B> <C-U> Used this for tmux but now don't need it
 
 "Remapping of Actual Keys
 "Note: Made a major change. Now, carriage return returns a newline

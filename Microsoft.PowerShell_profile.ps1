@@ -51,7 +51,7 @@ function mkgo ($folderName) {
 }
 
 function fortune {
-    $fortuneLocation = "C:\Users\z124t\source\repos\fortune\fortune.exe"
+    $fortuneLocation = "C:\Users\z124t\source\repos\fortune\zig-out\bin\fortune.exe"
     $noofFortunes = 3515 # update this accordingly
     $randNum = (Get-Random -Max $noofFortunes)
     & $fortuneLocation $randNum
@@ -83,10 +83,13 @@ function Get-GZipSize ($url) {
 ######## Aliases ###############
 Set-Alias -Name v -Value nvim
 Set-Alias -Name ssa -Value ssh-agent
+Set-Alias -Name npm -Value pnpm
 
 ######## Aliases as Functions ###############
 function nimc { nim c $args }
 function nimrun { nim c -r $args }
+# for scoop search
+function scoop { if ($args[0] -eq "search") { scoop-search.exe @($args | Select-Object -Skip 1) } else { scoop.ps1 @args } }
 
 # On Startup, do:
 fortune

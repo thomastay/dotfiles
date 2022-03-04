@@ -26,6 +26,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'b3nj5m1n/kommentary'
 Plug 'ziglang/zig.vim'
 Plug 'rakr/vim-one'
+Plug 'simrat39/rust-tools.nvim'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Auto Completion engine
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " Snippets
 
@@ -99,7 +100,7 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -110,14 +111,49 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', ',fa', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local servers = { 'zls' }
+local servers = { 'zls', 'gopls' }
 local lspConfig = require('lspconfig')
 local coq = require "coq"
 for _, lsp in ipairs(servers) do
     lspConfig[lsp].setup(coq.lsp_ensure_capabilities({
         on_attach = on_attach,
+        gopls = {
+            analyses = { unusedparams = true },
+            staticcheck = true,
+        }
     }))
 end
+
+local rustToolsOpts = {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+    server = {
+        -- on_attach is a callback called when the language server attachs to the buffer
+        on_attach = on_attach,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+    },
+}
+require('rust-tools').setup(rustToolsOpts)
 ENDLUA
 
 "For Buffergator
@@ -162,7 +198,7 @@ set shiftwidth=4
 set expandtab
 
 "2 space indents
-autocmd Filetype javascript,html,css setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript,typescript,html,css setlocal ts=2 sw=2 expandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
 autocmd Filetype tex,text,markdown setlocal ts=2 sw=2 expandtab
 autocmd Filetype nim setlocal ts=2 sw=2 expandtab

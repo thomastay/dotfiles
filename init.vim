@@ -20,15 +20,11 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim'
-Plug 'nvim-telescope/telescope-live-grep-raw.nvim'
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'neovim/nvim-lspconfig'
 Plug 'b3nj5m1n/kommentary'
-Plug 'ziglang/zig.vim'
 Plug 'rakr/vim-one'
-Plug 'simrat39/rust-tools.nvim'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " Auto Completion engine
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'} " Snippets
 
 " " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -70,15 +66,13 @@ require('telescope').setup {
 }
 require('telescope').load_extension('fzf')
 require('which-key').setup()
-require('which-key').register {
-    ["<leader>ut"] = "Convert word to UTC Date",
+require('which-key').add({
+  { "<C-p>", require("telescope.builtin").find_files, desc = "Find File" },
+  { "<leader>rg", require("telescope").extensions.live_grep_args.live_grep_args, desc = "Search in files" },
+  { "<leader>rs", require("telescope.builtin").grep_string, desc = "Search for string under cursor" },
+  { "<leader>ut", desc = "Convert word to UTC Date" },
+})
 
-    -- For telescope (Ctrl P replacement)
-    -- Find files using Telescope command-line sugar.
-    ["<C-p>"]      = { require("telescope.builtin").find_files, "Find File" },
-    ["<leader>rg"] = { require("telescope").extensions.live_grep_raw.live_grep_raw, "Search in files" },
-    ["<leader>rs"] = { require("telescope.builtin").grep_string, "Search for string under cursor" },
-}
 
 --- =============================================
 ---
@@ -111,49 +105,8 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', ',fa', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local servers = { 'zls', 'gopls' }
+local servers = { 'gopls' }
 local lspConfig = require('lspconfig')
-local coq = require "coq"
-for _, lsp in ipairs(servers) do
-    lspConfig[lsp].setup(coq.lsp_ensure_capabilities({
-        on_attach = on_attach,
-        gopls = {
-            analyses = { unusedparams = true },
-            staticcheck = true,
-        }
-    }))
-end
-
-local rustToolsOpts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-require('rust-tools').setup(rustToolsOpts)
 ENDLUA
 
 "For Buffergator
@@ -169,7 +122,7 @@ nmap <leader>gp :Git push<CR>
 set diffopt+=vertical
 
 " For Python executable
-let g:python3_host_prog = 'C:/Program Files/WindowsApps/PythonSoftwareFoundation.Python.3.8_3.8.2800.0_x64__qbz5n2kfra8p0/python3.8.exe'
+" let g:python3_host_prog = 'C:/Program Files/WindowsApps/PythonSoftwareFoundation.Python.3.8_3.8.2800.0_x64__qbz5n2kfra8p0/python3.8.exe'
 
 " For Fish
 "" Set up :make to use fish for syntax checking.
@@ -236,18 +189,18 @@ set mouse=a
 
 " For the clipboard (speeds up booting on WSL)
 set clipboard+=unnamedplus
-let g:clipboard = {
-      \   'name': 'windowsclipboard',
-      \   'copy': {
-      \      '+': ['win32yank', '-i', '--crlf'],
-      \      '*': ['win32yank', '-i', '--crlf'],
-      \    },
-      \   'paste': {
-      \      '+': ['win32yank', '-o', '--lf'],
-      \      '*': ['win32yank', '-o', '--lf'],
-      \   },
-      \   'cache_enabled': 1,
-      \ }
+"let g:clipboard = {
+"      \   'name': 'windowsclipboard',
+"      \   'copy': {
+"      \      '+': ['win32yank', '-i', '--crlf'],
+"      \      '*': ['win32yank', '-i', '--crlf'],
+"      \    },
+"      \   'paste': {
+"      \      '+': ['win32yank', '-o', '--lf'],
+"      \      '*': ['win32yank', '-o', '--lf'],
+"      \   },
+"      \   'cache_enabled': 1,
+"      \ }
 
 " For nvim-qt
 set guifont=FiraCode\ NF
